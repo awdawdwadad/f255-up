@@ -96,8 +96,8 @@
             line-height: 1.5;
         }
 
-        /* Ortalama hesaplama bölümü stili */
-        .average-calculator {
+        /* Irk bilgileri bölümü stili */
+        .civilizations-info {
             position: fixed;
             bottom: 20px;
             left: 20px;
@@ -107,46 +107,43 @@
             padding: 15px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             width: 250px;
-            text-align: center;
-            z-index: 1001; /* Üstte görünmesini sağlar */
+            max-height: 200px; /* Başlangıçta küçük görünmesini sağlar */
+            overflow-y: auto; /* İçeriğin yukarı/aşağı kaydırılmasını sağlar */
+            transition: max-height 0.3s ease; /* Yükseklik değişimini yumuşatır */
         }
 
-        .average-calculator header {
+        .civilizations-info.expanded {
+            max-height: 600px; /* Genişletildiğinde görünür yüksekliği artırır */
+        }
+
+        .civilizations-info header {
             padding: 10px;
             background-color: #444;
             border-radius: 8px 8px 0 0;
             font-size: 1.1em;
             font-weight: bold;
+            cursor: pointer; /* Buton gibi görünmesini sağlar */
         }
 
-        .average-calculator input {
-            margin: 5px 0;
-            padding: 8px;
-            border: 1px solid #555;
-            border-radius: 4px;
-            background-color: #222;
+        .civilizations-info p {
+            font-size: 0.9em;
+            margin: 10px 0;
+            line-height: 1.4;
+        }
+
+        .toggle-button {
+            background-color: #444;
             color: #fff;
-            width: calc(100% - 20px);
-        }
-
-        .average-calculator button {
-            padding: 10px 15px;
             border: none;
             border-radius: 4px;
-            background-color: #555;
-            color: #fff;
+            padding: 10px;
             cursor: pointer;
+            margin-top: 10px;
             width: 100%;
-            margin-top: 10px;
         }
 
-        .average-calculator button:hover {
-            background-color: #666;
-        }
-
-        .average-calculator p {
-            font-size: 1.1em;
-            margin-top: 10px;
+        .toggle-button:hover {
+            background-color: #555;
         }
     </style>
 </head>
@@ -194,12 +191,23 @@
         <p>Bayramx&nbsp;/&nbsp;Cinayii&nbsp;/&nbsp;Byzantines&nbsp;/&nbsp;Cody&nbsp;/&nbsp;Dodi&nbsp;/&nbsp;Fratious&nbsp;/&nbsp;Hamzat&nbsp;/&nbsp;Lost&nbsp;/&nbsp;Mefe&nbsp;/&nbsp;Prowess&nbsp;/&nbsp;Strikeman&nbsp;/&nbsp;The Karga&nbsp;/&nbsp;Turk&nbsp;/&nbsp;Yolcu</p>
     </div>
 
-    <!-- Ortalama Hesaplama Bölümü -->
-    <div class="average-calculator">
-        <header>Ortalama Hesaplayıcı</header>
-        <input type="text" id="numbers" placeholder="Verileri virgülle ayırarak girin">
-        <button onclick="calculateAverage()">Hesapla</button>
-        <p id="result">Sonuç: -</p>
+    <!-- Irk Bilgileri Bölümü -->
+    <div class="civilizations-info">
+        <header onclick="toggleInfo()">Age of Empires II Irkları</header>
+        <p><strong>Bizanslar:</strong> Savunma ve ekonomi odaklı, yüksek surlar ve güçlü gemilerle bilinirler.</p>
+        <p><strong>Britonlar:</strong> Uzun menzilli okçular ve güçlü piyade birimleri ile tanınırlar.</p>
+        <p><strong>Fransızlar:</strong> Güçlü süvariler ve hız avantajına sahip, güçlü bir ekonomi ile bilinirler.</p>
+        <p><strong>Germanya:</strong> Güçlü piyadeler ve ekonomik avantajlar sunar, savunma stratejilerinde etkilidirler.</p>
+        <p><strong>Hazarlar:</strong> Esnek birimlere ve hızlı savunma yapıları ile tanınırlar.</p>
+        <p><strong>İspanyollar:</strong> Güçlü kalkanları ve etkili süvari birimleri ile bilinirler.</p>
+        <p><strong>İtalyanlar:</strong> Ekonomik avantajlar ve güçlü deniz filosu ile öne çıkarlar.</p>
+        <p><strong>Macarlar:</strong> Hızlı ve güçlü süvarilerle tanınır, savaş alanında hareket kabiliyeti sağlarlar.</p>
+        <p><strong>Moğollar:</strong> Hızlı ve güçlü okçular ile bilinirler, hareketli savaş stratejileri uygularlar.</p>
+        <p><strong>Persler:</strong> Güçlü savaş filleri ve ekonomik avantajlar sunar.</p>
+        <p><strong>Ruslar:</strong> Etkili piyade birimleri ve savunma yapıları ile tanınırlar.</p>
+        <p><strong>Vikingler:</strong> Güçlü deniz birlikleri ve savaş filleri ile tanınır, ekonomik avantajlar sunar.</p>
+        <!-- Daha fazla ırk bilgisi ekleyebilirsiniz -->
+        <button class="toggle-button" onclick="toggleInfo()">Bilgileri Göster/Gizle</button>
     </div>
 
     <script>
@@ -215,12 +223,9 @@
 
         document.addEventListener('click', startMusic);
 
-        function calculateAverage() {
-            const numbersInput = document.getElementById('numbers').value;
-            const numbers = numbersInput.split(',').map(num => parseFloat(num.trim())).filter(num => !isNaN(num));
-            const sum = numbers.reduce((acc, num) => acc + num, 0);
-            const average = numbers.length > 0 ? (sum / numbers.length).toFixed(2) : '-';
-            document.getElementById('result').textContent = `Sonuç: ${average}`;
+        function toggleInfo() {
+            const infoSection = document.querySelector('.civilizations-info');
+            infoSection.classList.toggle('expanded');
         }
     </script>
 </body>
