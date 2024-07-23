@@ -92,10 +92,7 @@
             line-height: 1.5;
         }
 
-        .civilizations-info {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
+        .info-section {
             background-color: #333;
             color: #fff;
             border-radius: 8px;
@@ -105,13 +102,14 @@
             max-height: 200px; /* Başlangıçta küçük görünmesini sağlar */
             overflow-y: auto; /* İçeriğin yukarı/aşağı kaydırılmasını sağlar */
             transition: max-height 0.3s ease; /* Yükseklik değişimini yumuşatır */
+            position: relative;
         }
 
-        .civilizations-info.expanded {
+        .info-section.expanded {
             max-height: 600px; /* Genişletildiğinde görünür yüksekliği artırır */
         }
 
-        .civilizations-info header {
+        .info-section header {
             padding: 10px;
             background-color: #444;
             border-radius: 8px 8px 0 0;
@@ -120,7 +118,7 @@
             cursor: pointer; /* Buton gibi görünmesini sağlar */
         }
 
-        .civilizations-info p {
+        .info-section p {
             font-size: 0.9em;
             margin: 10px 0;
             line-height: 1.4;
@@ -141,53 +139,16 @@
             background-color: #555;
         }
 
+        .civilizations-info {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+        }
+
         .multiplayer-info {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background-color: #222;
-            color: #fff;
-            border-radius: 8px;
-            padding: 15px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            width: 250px;
-            max-height: 200px; /* Başlangıçta küçük görünmesini sağlar */
-            overflow-y: auto; /* İçeriğin yukarı/aşağı kaydırılmasını sağlar */
-            transition: max-height 0.3s ease; /* Yükseklik değişimini yumuşatır */
-        }
-
-        .multiplayer-info.expanded {
-            max-height: 600px; /* Genişletildiğinde görünür yüksekliği artırır */
-        }
-
-        .multiplayer-info header {
-            padding: 10px;
-            background-color: #444;
-            border-radius: 8px 8px 0 0;
-            font-size: 1.1em;
-            font-weight: bold;
-            cursor: pointer; /* Buton gibi görünmesini sağlar */
-        }
-
-        .multiplayer-info p {
-            font-size: 0.9em;
-            margin: 10px 0;
-            line-height: 1.4;
-        }
-
-        .multiplayer-info .toggle-button {
-            background-color: #444;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            padding: 10px;
-            cursor: pointer;
-            margin-top: 10px;
-            width: 100%;
-        }
-
-        .multiplayer-info .toggle-button:hover {
-            background-color: #555;
         }
     </style>
 </head>
@@ -237,7 +198,7 @@
     </div>
 
     <!-- Irk Bilgileri Bölümü -->
-    <div class="civilizations-info">
+    <div class="info-section civilizations-info">
         <header onclick="toggleInfo()">Age of Empires II Irkları</header>
         <p><strong>Bizanslar:</strong> Savunma ve ekonomi odaklı, yüksek surlar ve güçlü gemilerle bilinirler.</p>
         <p><strong>Britonlar:</strong> Uzun menzilli okçular ve güçlü piyade birimleri ile tanınırlar.</p>
@@ -255,7 +216,7 @@
     </div>
 
     <!-- Çok Oyunculu Bilgiler Bölümü -->
-    <div class="multiplayer-info">
+    <div class="info-section multiplayer-info">
         <header onclick="toggleMultiplayerInfo()">Çok Oyunculu Oynama Bilgileri</header>
         <p><strong>GameRanger ile İki Oyuncu Nasıl Bağlanır:</strong></p>
         <p>1. GameRanger uygulamasını açın ve giriş yapın.</p>
