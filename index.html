@@ -8,13 +8,27 @@
         body {
             margin: 0;
             overflow: hidden;
-            background-color: black; /* Açık gri arka plan rengi */
-            background-image: url("https://images.unsplash.com/photo-1506748686214e9df14f1d3e9d0"); /* Soyut renkler resmi */
+            color: aliceblue;
+            height: 100vh;
+            background-color: black; /* Varsayılan arka plan rengi */
+            background-image: url("ageback.png"); /* Yeni arka plan resmi */
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center;
-            height: 100vh;
-            color: aliceblue;
+            display: flex;
+            justify-content: center; /* Ortaya hizalama */
+            align-items: center; /* Ortaya hizalama */
+        }
+
+        /* Arka planda video */
+        #background-video {
+            position: fixed; /* Sabit konumda */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Video boyutlandırması */
+            z-index: -1; /* Diğer içeriklerin video üstünde olması için */
         }
 
         #start-message {
@@ -32,6 +46,19 @@
             z-index: 1000;
         }
 
+        /* İçerik sütunu */
+        .content-container {
+            position: relative;
+            z-index: 10; /* Üstte kalmasını sağlar */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.7); /* Arka plan için hafif şeffaf arka plan */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        /* Yan menü */
         .sidebar {
             position: fixed;
             right: 0;
@@ -65,6 +92,7 @@
 
         h1 {
             color: aliceblue;
+            margin: 0 0 20px 0;
         }
 
         a {
@@ -77,7 +105,7 @@
             color: #fff;
             padding: 20px;
             text-align: center;
-            position: absolute;
+            position: relative;
             bottom: 0;
             width: 100%;
         }
@@ -103,6 +131,7 @@
             overflow-y: auto; /* İçeriğin yukarı/aşağı kaydırılmasını sağlar */
             transition: max-height 0.3s ease; /* Yükseklik değişimini yumuşatır */
             position: relative;
+            margin-bottom: 20px; /* Bölümler arası boşluk */
         }
 
         .info-section.expanded {
@@ -140,22 +169,83 @@
         }
 
         .civilizations-info {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
+            position: relative;
         }
 
         .multiplayer-info {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
+            position: relative;
         }
     </style>
 </head>
 <body>
+    <!-- Arka planda video -->
+    <video id="background-video" autoplay muted loop>
+        <source src="agevideo.mp4" type="video/mp4">
+    </video>
+
     <!-- Başlangıç mesajı -->
     <audio id="background-music" src="HTML Tutorial - Google Chrome 2024-07-23 00-51-24 (online-audio-converter.com).mp3" loop></audio>
     <div id="start-message">Müziği başlatmak için tıklayın</div>
+
+    <!-- İçerik Sütunu -->
+    <div class="content-container">
+        <h1>Age of Empires II Kadiköy B&M Kafe / İstanbul / Türkiye (Her Cumartesi)</h1>
+
+        <!-- İçerik bağlantıları -->
+        <div>
+            <img src="ageofforgatten.jpeg" width="100" height="70">
+            <a href="age.rar">age of empires II Forgotten Empires Full</a><br><br>
+        </div>
+
+        <div>
+            <a href="wololo.rar">For GAME RANGER - VERSION CHANGER (1.0, 1.0C, 1.0E etc.)</a>
+        </div>
+
+        <div>
+            <img src="aeo2.1.png" width="100" height="70">
+            <a href="aox.rar">For GAME RANGER - AGE OF EMPIRES (AOX). (Tavsiye Edilen)</a>
+        </div><br><br>
+
+        <p><a href="hd-hotkeys.zip">HD HOTKEYLER (Tüm HD hotkeyler)</a></p><br><br>
+
+        <p><a href="https://www.gameranger.com/"><strong>GameRanger</strong><br><br> - Çok oyunculu oynamak için gereken ek uygulama</a></p>
+
+        <!-- Emekleri Geçenler Bölümü -->
+        <div class="contributors">
+            <h2>Yıllarını Verenler</h2>
+            <p>Bayramx / Cinayii / Byzantines / Cody / Dodi / Fratious / Hamzat / Lost / Mefe / Prowess / Strikeman / The Karga / Turk / Yolcu</p>
+        </div>
+
+        <!-- Irk Bilgileri Bölümü -->
+        <div class="info-section civilizations-info">
+            <header onclick="toggleInfo()">Age of Empires II Irkları</header>
+            <p><strong>Bizanslar:</strong> Savunma ve ekonomi odaklı, yüksek surlar ve güçlü gemilerle bilinirler.</p>
+            <p><strong>Britonlar:</strong> Uzun menzilli okçular ve güçlü piyade birimleri ile tanınırlar.</p>
+            <p><strong>Fransızlar:</strong> Güçlü süvariler ve hız avantajına sahip, güçlü bir ekonomi ile bilinirler.</p>
+            <p><strong>Germanya:</strong> Güçlü piyadeler ve ekonomik avantajlar sunar, savunma stratejilerinde etkilidirler.</p>
+            <p><strong>Hazarlar:</strong> Esnek birimlere ve hızlı savunma yapıları ile tanınırlar.</p>
+            <p><strong>İspanyollar:</strong> Güçlü kalkanları ve etkili süvari birimleri ile bilinirler.</p>
+            <p><strong>İtalyanlar:</strong> Ekonomik avantajlar ve güçlü deniz filosu ile öne çıkarlar.</p>
+            <p><strong>Macarlar:</strong> Hızlı ve güçlü süvarilerle tanınır, savaş alanında hareket kabiliyeti sağlarlar.</p>
+            <p><strong>Moğollar:</strong> Hızlı ve güçlü okçular ile bilinirler, hareketli savaş stratejileri uygularlar.</p>
+            <p><strong>Persler:</strong> Güçlü savaş filleri ve ekonomik avantajlar sunar.</p>
+            <p><strong>Ruslar:</strong> Etkili piyade birimleri ve savunma yapıları ile tanınırlar.</p>
+            <p><strong>Vikingler:</strong> Güçlü deniz birlikleri ve savaş filleri ile tanınır, ekonomik avantajlar sunar.</p>
+            <button class="toggle-button" onclick="toggleInfo()">Bilgileri Göster/Gizle</button>
+        </div>
+
+        <!-- Çok Oyunculu Bilgiler Bölümü -->
+        <div class="info-section multiplayer-info">
+            <header onclick="toggleMultiplayerInfo()">Çok Oyunculu Oynama Bilgileri</header>
+            <p><strong>GameRanger ile İki Oyuncu Nasıl Bağlanır:</strong></p>
+            <p>1. GameRanger uygulamasını açın ve giriş yapın.</p>
+            <p>2. "Oyunlar" sekmesine gidin ve "Age of Empires II" seçeneğini bulun.</p>
+            <p>3. Oyun odasına katılmak için odanın adına çift tıklayın veya yeni bir oda oluşturun.</p>
+            <p>4. Diğer oyuncularla bağlantı kurmak için odanın "Arkadaş Ekle" seçeneğini kullanın.</p>
+            <p>5. Bağlantı kurduktan sonra, oyunu başlatın ve çok oyunculu deneyimin tadını çıkarın!</p>
+            <button class="toggle-button" onclick="toggleMultiplayerInfo()">Bilgileri Göster/Gizle</button>
+        </div>
+    </div>
 
     <!-- Yan menü -->
     <div class="sidebar">
@@ -170,65 +260,6 @@
         </div>
     </div>
 
-    <h1>Age of Empires II Kadiköy B&M Kafe / İstanbul / Türkiye (Her Cumartesi)</h1>
-
-    <!-- İçerik bağlantıları -->
-    <div>
-        <img src="ageofforgatten.jpeg" width="100" height="70">
-        <a href="age.rar">age of empires II Forgotten Empires Full</a><br><br><br>
-    </div>
-
-    <div>
-        <a href="wololo.rar">For GAME RANGER - VERSION CHANGER (1.0, 1.0C, 1.0E etc.)</a>
-    </div>
-
-    <div>
-        <img src="aeo2.1.png" width="100" height="70">
-        <a href="aox.rar">For GAME RANGER - AGE OF EMPIRES (AOX). (Tavsiye Edilen)</a>
-    </div><br><br><br>
-
-    <p><a href="hd-hotkeys.zip">HD HOTKEYLER (Tüm HD hotkeyler)</a></p><br><br><br>
-
-    <p><a href="https://www.gameranger.com/"><strong>GameRanger</strong><br><br><br> - Çok oyunculu oynamak için gereken ek uygulama</a></p>
-
-    <!-- Emekleri Geçenler Bölümü -->
-    <div class="contributors">
-        <h2>Yıllarını Verenler</h2>
-        <p>Bayramx / Cinayii / Byzantines / Cody / Dodi / Fratious / Hamzat / Lost / Mefe / Prowess / Strikeman / The Karga / Turk / Yolcu</p>
-    </div>
-
-    <!-- Irk Bilgileri Bölümü -->
-    <div class="info-section civilizations-info">
-        <header onclick="toggleInfo()">Age of Empires II Irkları</header>
-        <p><strong>Bizanslar:</strong> Savunma ve ekonomi odaklı, yüksek surlar ve güçlü gemilerle bilinirler.</p>
-        <p><strong>Britonlar:</strong> Uzun menzilli okçular ve güçlü piyade birimleri ile tanınırlar.</p>
-        <p><strong>Fransızlar:</strong> Güçlü süvariler ve hız avantajına sahip, güçlü bir ekonomi ile bilinirler.</p>
-        <p><strong>Germanya:</strong> Güçlü piyadeler ve ekonomik avantajlar sunar, savunma stratejilerinde etkilidirler.</p>
-        <p><strong>Hazarlar:</strong> Esnek birimlere ve hızlı savunma yapıları ile tanınırlar.</p>
-        <p><strong>İspanyollar:</strong> Güçlü kalkanları ve etkili süvari birimleri ile bilinirler.</p>
-        <p><strong>İtalyanlar:</strong> Ekonomik avantajlar ve güçlü deniz filosu ile öne çıkarlar.</p>
-        <p><strong>Macarlar:</strong> Hızlı ve güçlü süvarilerle tanınır, savaş alanında hareket kabiliyeti sağlarlar.</p>
-        <p><strong>Moğollar:</strong> Hızlı ve güçlü okçular ile bilinirler, hareketli savaş stratejileri uygularlar.</p>
-        <p><strong>Persler:</strong> Güçlü savaş filleri ve ekonomik avantajlar sunar.</p>
-        <p><strong>Ruslar:</strong> Etkili piyade birimleri ve savunma yapıları ile tanınırlar.</p>
-        <p><strong>Vikingler:</strong> Güçlü deniz birlikleri ve savaş filleri ile tanınır, ekonomik avantajlar sunar.</p>
-        <button class="toggle-button" onclick="toggleInfo()">Bilgileri Göster/Gizle</button>
-    </div>
-
-    <!-- Çok Oyunculu Bilgiler Bölümü -->
-    <div class="info-section multiplayer-info">
-        <header onclick="toggleMultiplayerInfo()">Çok Oyunculu Oynama Bilgileri</header>
-        <p><strong>GameRanger ile İki Oyuncu Nasıl Bağlanır:</strong></p>
-        <p>1. GameRanger uygulamasını açın ve giriş yapın.</p>
-        <p>2. "Oyunlar" sekmesine gidin ve "Age of Empires II" seçeneğini bulun.</p>
-        <p>3. Oyun odasına katılmak için odanın adına çift tıklayın veya yeni bir oda oluşturun.</p>
-        <p>4. Diğer oyuncularla bağlantı kurmak için odanın "Arkadaş Ekle" seçeneğini kullanın.</p>
-        <p>5. Bağlantı kurduktan sonra, oyunu başlatın ve çok oyunculu deneyimin tadını çıkarın!</p>
-        <button class="toggle-button" onclick="toggleMultiplayerInfo()">Bilgileri Göster/Gizle</button>
-    </div>
-
-    <!-- Google AdSense Script -->
-    
     <script>
         const backgroundAudio = document.getElementById('background-music');
         const startMessage = document.getElementById('start-message');
@@ -251,11 +282,9 @@
             const multiplayerSection = document.querySelector('.multiplayer-info');
             multiplayerSection.classList.toggle('expanded');
         }
-
-        
     </script>
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6999880595458369"
-crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6999880595458369"
+    crossorigin="anonymous"></script>
 </body>
 </html>
