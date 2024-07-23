@@ -7,16 +7,18 @@
     <style>
         body {
             margin: 0;
-            overflow: hidden;
-             /* Açık gri arka plan rengi */
-            background-image: url("ageback.png"); /* Soyut renkler resmi */
+            padding: 0;
+            height: 100vh;
+            color: aliceblue;
+            background-image: url("ageback.png");
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center;
-            height: 100vh;
-            color: aliceblue;
+            display: flex;
+            flex-direction: column;
         }
 
+        /* Başlangıç mesajı */
         #start-message {
             position: fixed;
             top: 0;
@@ -32,17 +34,18 @@
             z-index: 1000;
         }
 
+        /* Yan menü */
         .sidebar {
-    position: fixed;
-    right: 0;
-    top: 0;
-    width: 300px;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.0); /* Şeffaf arka plan */
-    box-shadow: -2px 0 5px rgba(0,0,0,0.1);
-    overflow: hidden;
-    z-index: 1;
-}
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 300px;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Şeffaf siyah arka plan */
+            box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+            overflow: hidden;
+            z-index: 0; /* Diğer içeriklerin üstünde görünmeyecek */
+        }
 
         .image-container {
             position: absolute;
@@ -59,16 +62,25 @@
             display: block;
         }
 
-       
-        
+        @keyframes scroll {
+            0% { transform: translateY(100%); }
+            100% { transform: translateY(-100%); }
+        }
 
         h1 {
             color: aliceblue;
+            margin: 20px;
         }
 
         a {
             text-decoration: none;
             color: azure;
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+            margin-right: 320px; /* Sidebar'ın genişliği kadar sağ boşluk bırakır */
         }
 
         .contributors {
@@ -78,7 +90,9 @@
             text-align: center;
             position: fixed;
             bottom: 0;
-            width: 100%;
+            width: calc(100% - 300px); /* Sidebar genişliği kadar azaltılmış genişlik */
+            margin-right: 300px; /* Sidebar'ın genişliği kadar sağ boşluk bırakır */
+            box-shadow: 0 -1px 5px rgba(0,0,0,0.5);
         }
 
         .contributors h2 {
@@ -105,92 +119,9 @@
         .toggle-button:hover {
             background-color: #555;
         }
-
-        
-        
-
-
-
-        .contributors {
-            background-color: #222;
-            color: #fff;
-            padding: 10px;
-            text-align: center;
-            position: center;
-            bottom: 0;
-            width: 100%;
-        }
-
-        .metin {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            animation: scroll 30s linear infinite;
-        }
-
-        .metin img {
-            width: 10%;
-            height: auto;
-            display: block;}
-
-        
-
-       
-
     </style>
 </head>
 <body>
-
-
-
-
-
-<div>
-    <h1>Age of Empires II Kadiköy B&M Kafe / İstanbul / Türkiye (Her Cumartesi)</h1>
-
-    <!-- İçerik bağlantıları -->
-    
-        <img src="ageofforgatten.jpeg" width="100" height="70">
-        <a href="age.rar">age of empires II Forgotten Empires Full</a><br><br><br>
-    
-
-    
-        <a href="wololo.rar">For GAME RANGER - VERSION CHANGER (1.0, 1.0C, 1.0E etc.)</a><br><br><br>
-    
-
-   
-        <img src="aeo2.1.png" width="100" height="70">
-        <a href="aox.rar">For GAME RANGER - AGE OF EMPIRES (AOX). (Tavsiye Edilen)</a>
-    <br><br><br>
-
-    <p><a href="hd-hotkeys.zip">HD HOTKEYLER (Tüm HD hotkeyler)</a></p><br><br><br>
-
-    <p><a href="https://www.gameranger.com/"><strong>GameRanger</strong><br><br><br> - Çok oyunculu oynamak için gereken ek uygulama</a></p>
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <!-- Başlangıç mesajı -->
     <audio id="background-music" src="HTML Tutorial - Google Chrome 2024-07-23 00-51-24 (online-audio-converter.com).mp3" loop></audio>
     <div id="start-message">Müziği başlatmak için tıklayın</div>
@@ -208,7 +139,23 @@
         </div>
     </div>
 
-    
+    <!-- Ana içerik -->
+    <div class="content">
+        <h1>Age of Empires II Kadiköy B&M Kafe / İstanbul / Türkiye (Her Cumartesi)</h1>
+        <div>
+            <img src="ageofforgatten.jpeg" width="100" height="70">
+            <a href="age.rar">age of empires II Forgotten Empires Full</a><br><br><br>
+        </div>
+        <div>
+            <a href="wololo.rar">For GAME RANGER - VERSION CHANGER (1.0, 1.0C, 1.0E etc.)</a>
+        </div>
+        <div>
+            <img src="aeo2.1.png" width="100" height="70">
+            <a href="aox.rar">For GAME RANGER - AGE OF EMPIRES (AOX). (Tavsiye Edilen)</a>
+        </div><br><br><br>
+        <p><a href="hd-hotkeys.zip">HD HOTKEYLER (Tüm HD hotkeyler)</a></p><br><br><br>
+        <p><a href="https://www.gameranger.com/"><strong>GameRanger</strong><br><br><br> - Çok oyunculu oynamak için gereken ek uygulama</a></p>
+    </div>
 
     <!-- Emekleri Geçenler Bölümü -->
     <div class="contributors">
@@ -216,9 +163,6 @@
         <p>Bayramx / Cinayii / Byzantines / Cody / Dodi / Fratious / Hamzat / Lost / Mefe / Prowess / Strikeman / The Karga / Turk / Yolcu</p>
     </div>
 
-    
-    
-    
     <!-- Google AdSense Script -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6999880595458369"
             crossorigin="anonymous"></script>
@@ -235,7 +179,6 @@
         }
 
         document.addEventListener('click', startMusic);
-        
     </script>
 </body>
 </html>
