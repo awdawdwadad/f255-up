@@ -18,6 +18,7 @@
             display: flex;
             justify-content: center; /* Ortaya hizalama */
             align-items: center; /* Ortaya hizalama */
+            flex-direction: column; /* İçeriği dikey olarak hizalama */
         }
 
         /* Arka planda video */
@@ -56,6 +57,81 @@
             background: rgba(0, 0, 0, 0.7); /* Arka plan için hafif şeffaf arka plan */
             padding: 20px;
             border-radius: 10px;
+        }
+
+        /* Bilgilendirme bölümleri */
+        .info-sections {
+            display: flex;
+            flex-direction: column; /* Bilgi bölümlerini dikey olarak yerleştirir */
+            gap: 20px; /* Bölümler arasına boşluk ekler */
+            margin-bottom: 20px; /* Alt boşluk */
+        }
+
+        .info-section {
+            background-color: #333;
+            color: #fff;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            width: 250px;
+            max-height: 200px; /* Başlangıçta küçük görünmesini sağlar */
+            overflow-y: auto; /* İçeriğin yukarı/aşağı kaydırılmasını sağlar */
+            transition: max-height 0.3s ease; /* Yükseklik değişimini yumuşatır */
+            position: relative;
+        }
+
+        .info-section.expanded {
+            max-height: 600px; /* Genişletildiğinde görünür yüksekliği artırır */
+        }
+
+        .info-section header {
+            padding: 10px;
+            background-color: #444;
+            border-radius: 8px 8px 0 0;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer; /* Buton gibi görünmesini sağlar */
+        }
+
+        .info-section p {
+            font-size: 0.9em;
+            margin: 10px 0;
+            line-height: 1.4;
+        }
+
+        .toggle-button {
+            background-color: #444;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .toggle-button:hover {
+            background-color: #555;
+        }
+
+        .contributors {
+            background-color: #222;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+            position: absolute;
+            bottom: 0; /* Sayfanın alt kısmına sabitle */
+        }
+
+        .contributors h2 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+
+        .contributors p {
+            margin: 10px 0;
+            line-height: 1.5;
         }
 
         /* Yan menü */
@@ -99,82 +175,6 @@
             text-decoration: none;
             color: azure;
         }
-
-        .contributors {
-            background-color: #222;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-        }
-
-        .contributors h2 {
-            margin: 0;
-            font-size: 1.5em;
-        }
-
-        .contributors p {
-            margin: 10px 0;
-            line-height: 1.5;
-        }
-
-        .info-section {
-            background-color: #333;
-            color: #fff;
-            border-radius: 8px;
-            padding: 15px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            width: 250px;
-            max-height: 200px; /* Başlangıçta küçük görünmesini sağlar */
-            overflow-y: auto; /* İçeriğin yukarı/aşağı kaydırılmasını sağlar */
-            transition: max-height 0.3s ease; /* Yükseklik değişimini yumuşatır */
-            position: relative;
-            margin-bottom: 20px; /* Bölümler arası boşluk */
-        }
-
-        .info-section.expanded {
-            max-height: 600px; /* Genişletildiğinde görünür yüksekliği artırır */
-        }
-
-        .info-section header {
-            padding: 10px;
-            background-color: #444;
-            border-radius: 8px 8px 0 0;
-            font-size: 1.1em;
-            font-weight: bold;
-            cursor: pointer; /* Buton gibi görünmesini sağlar */
-        }
-
-        .info-section p {
-            font-size: 0.9em;
-            margin: 10px 0;
-            line-height: 1.4;
-        }
-
-        .toggle-button {
-            background-color: #444;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            padding: 10px;
-            cursor: pointer;
-            margin-top: 10px;
-            width: 100%;
-        }
-
-        .toggle-button:hover {
-            background-color: #555;
-        }
-
-        .civilizations-info {
-            position: relative;
-        }
-
-        .multiplayer-info {
-            position: relative;
-        }
     </style>
 </head>
 <body>
@@ -210,40 +210,37 @@
 
         <p><a href="https://www.gameranger.com/"><strong>GameRanger</strong><br><br> - Çok oyunculu oynamak için gereken ek uygulama</a></p>
 
-        <!-- Emekleri Geçenler Bölümü -->
-        <div class="contributors">
-            <h2>Yıllarını Verenler</h2>
-            <p>Bayramx / Cinayii / Byzantines / Cody / Dodi / Fratious / Hamzat / Lost / Mefe / Prowess / Strikeman / The Karga / Turk / Yolcu</p>
-        </div>
+        <!-- Bilgilendirme bölümleri -->
+        <div class="info-sections">
+            <!-- Irk Bilgileri Bölümü -->
+            <div class="info-section civilizations-info">
+                <header onclick="toggleInfo()">Age of Empires II Irkları</header>
+                <p><strong>Bizanslar:</strong> Savunma ve ekonomi odaklı, yüksek surlar ve güçlü gemilerle bilinirler.</p>
+                <p><strong>Britonlar:</strong> Uzun menzilli okçular ve güçlü piyade birimleri ile tanınırlar.</p>
+                <p><strong>Fransızlar:</strong> Güçlü süvariler ve hız avantajına sahip, güçlü bir ekonomi ile bilinirler.</p>
+                <p><strong>Germanya:</strong> Güçlü piyadeler ve ekonomik avantajlar sunar, savunma stratejilerinde etkilidirler.</p>
+                <p><strong>Hazarlar:</strong> Esnek birimlere ve hızlı savunma yapıları ile tanınırlar.</p>
+                <p><strong>İspanyollar:</strong> Güçlü kalkanları ve etkili süvari birimleri ile bilinirler.</p>
+                <p><strong>İtalyanlar:</strong> Ekonomik avantajlar ve güçlü deniz filosu ile öne çıkarlar.</p>
+                <p><strong>Macarlar:</strong> Hızlı ve güçlü süvarilerle tanınır, savaş alanında hareket kabiliyeti sağlarlar.</p>
+                <p><strong>Moğollar:</strong> Hızlı ve güçlü okçular ile bilinirler, hareketli savaş stratejileri uygularlar.</p>
+                <p><strong>Persler:</strong> Güçlü savaş filleri ve ekonomik avantajlar sunar.</p>
+                <p><strong>Ruslar:</strong> Etkili piyade birimleri ve savunma yapıları ile tanınırlar.</p>
+                <p><strong>Vikingler:</strong> Güçlü deniz birlikleri ve savaş filleri ile tanınır, ekonomik avantajlar sunar.</p>
+                <button class="toggle-button" onclick="toggleInfo()">Bilgileri Göster/Gizle</button>
+            </div>
 
-        <!-- Irk Bilgileri Bölümü -->
-        <div class="info-section civilizations-info">
-            <header onclick="toggleInfo()">Age of Empires II Irkları</header>
-            <p><strong>Bizanslar:</strong> Savunma ve ekonomi odaklı, yüksek surlar ve güçlü gemilerle bilinirler.</p>
-            <p><strong>Britonlar:</strong> Uzun menzilli okçular ve güçlü piyade birimleri ile tanınırlar.</p>
-            <p><strong>Fransızlar:</strong> Güçlü süvariler ve hız avantajına sahip, güçlü bir ekonomi ile bilinirler.</p>
-            <p><strong>Germanya:</strong> Güçlü piyadeler ve ekonomik avantajlar sunar, savunma stratejilerinde etkilidirler.</p>
-            <p><strong>Hazarlar:</strong> Esnek birimlere ve hızlı savunma yapıları ile tanınırlar.</p>
-            <p><strong>İspanyollar:</strong> Güçlü kalkanları ve etkili süvari birimleri ile bilinirler.</p>
-            <p><strong>İtalyanlar:</strong> Ekonomik avantajlar ve güçlü deniz filosu ile öne çıkarlar.</p>
-            <p><strong>Macarlar:</strong> Hızlı ve güçlü süvarilerle tanınır, savaş alanında hareket kabiliyeti sağlarlar.</p>
-            <p><strong>Moğollar:</strong> Hızlı ve güçlü okçular ile bilinirler, hareketli savaş stratejileri uygularlar.</p>
-            <p><strong>Persler:</strong> Güçlü savaş filleri ve ekonomik avantajlar sunar.</p>
-            <p><strong>Ruslar:</strong> Etkili piyade birimleri ve savunma yapıları ile tanınırlar.</p>
-            <p><strong>Vikingler:</strong> Güçlü deniz birlikleri ve savaş filleri ile tanınır, ekonomik avantajlar sunar.</p>
-            <button class="toggle-button" onclick="toggleInfo()">Bilgileri Göster/Gizle</button>
-        </div>
-
-        <!-- Çok Oyunculu Bilgiler Bölümü -->
-        <div class="info-section multiplayer-info">
-            <header onclick="toggleMultiplayerInfo()">Çok Oyunculu Oynama Bilgileri</header>
-            <p><strong>GameRanger ile İki Oyuncu Nasıl Bağlanır:</strong></p>
-            <p>1. GameRanger uygulamasını açın ve giriş yapın.</p>
-            <p>2. "Oyunlar" sekmesine gidin ve "Age of Empires II" seçeneğini bulun.</p>
-            <p>3. Oyun odasına katılmak için odanın adına çift tıklayın veya yeni bir oda oluşturun.</p>
-            <p>4. Diğer oyuncularla bağlantı kurmak için odanın "Arkadaş Ekle" seçeneğini kullanın.</p>
-            <p>5. Bağlantı kurduktan sonra, oyunu başlatın ve çok oyunculu deneyimin tadını çıkarın!</p>
-            <button class="toggle-button" onclick="toggleMultiplayerInfo()">Bilgileri Göster/Gizle</button>
+            <!-- Çok Oyunculu Bilgiler Bölümü -->
+            <div class="info-section multiplayer-info">
+                <header onclick="toggleMultiplayerInfo()">Çok Oyunculu Oynama Bilgileri</header>
+                <p><strong>GameRanger ile İki Oyuncu Nasıl Bağlanır:</strong></p>
+                <p>1. GameRanger uygulamasını açın ve giriş yapın.</p>
+                <p>2. "Oyunlar" sekmesine gidin ve "Age of Empires II" seçeneğini bulun.</p>
+                <p>3. Oyun odasına katılmak için odanın adına çift tıklayın veya yeni bir oda oluşturun.</p>
+                <p>4. Diğer oyuncularla bağlantı kurmak için odanın "Arkadaş Ekle" seçeneğini kullanın.</p>
+                <p>5. Bağlantı kurduktan sonra, oyunu başlatın ve çok oyunculu deneyimin tadını çıkarın!</p>
+                <button class="toggle-button" onclick="toggleMultiplayerInfo()">Bilgileri Göster/Gizle</button>
+            </div>
         </div>
     </div>
 
