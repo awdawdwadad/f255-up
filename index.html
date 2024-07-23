@@ -46,6 +46,12 @@
             overflow: hidden;
             z-index: 0;
         }
+        .photo-slide {
+            display: inline-flex;
+            flex-direction: column;
+            white-space: nowrap;
+            animation: 5s scroll infinite linear
+        }
 
         .image-container {
             position: absolute;
@@ -119,7 +125,7 @@
 
     <!-- Yan menü -->
     <div class="sidebar">
-        <div class="image-container">
+        <div class="photo-slide">
             <img src="agegrup.png" alt="Image 1">
             <img src="ageofgrup2.png" alt="Image 2">
             <img src="ageofgrup3.png" alt="Image 3">
@@ -128,7 +134,7 @@
             <img src="agegrup6.png" alt="Image 6">
             <img src="agegrup7.png" alt="Image 7">
         </div>
-        <div class="image-container">
+        <div class="photo-slide">
             <img src="agegrup.png" alt="Image 1">
             <img src="ageofgrup2.png" alt="Image 2">
             <img src="ageofgrup3.png" alt="Image 3">
