@@ -52,6 +52,7 @@
             background: black;
             box-shadow: -2px 0 5px rgba(0,0,0,0.1);
             overflow: hidden;
+            z-index: 1;
         }
 
         .image-container {
@@ -95,6 +96,7 @@
             transition: max-height 0.3s ease;
             position: relative;
             margin: 20px;
+            z-index: 1;
         }
 
         .info-section.expanded {
@@ -139,6 +141,7 @@
             position: absolute;
             bottom: 0;
             width: 100%;
+            box-sizing: border-box;
         }
 
         .contributors h2 {
@@ -220,4 +223,18 @@
     <div class="info-section multiplayer-info">
         <header onclick="toggleMultiplayerInfo()">Çok Oyunculu Oynama Bilgileri</header>
         <p><strong>GameRanger ile İki Oyuncu Nasıl Bağlanır:</strong></p>
-        <p>1. GameRanger uygulamasını açın ve
+        <p>1. GameRanger uygulamasını açın ve arkadaşınızı seçin.</p>
+        <p>2. Oyun başlatmak için gerekli ayarları yapın ve davet gönderin.</p>
+        <p>3. Arkadaşınız oyunu kabul ederse, oyuna başlayabilirsiniz.</p>
+    </div>
+
+    <!-- Yıllarını Verenler Bölümü -->
+    <div class="contributors">
+        <h2>Yıllarını Verenler</h2>
+        <p>Bu alanda, projeye büyük katkılarda bulunan ve yıllarını bu işte geçiren değerli kişiler yer almaktadır. Onların katkıları olmadan bu proje bu noktaya gelemezdi.</p>
+        <p>1. Kişi Adı - Katkıları</p>
+        <p>2. Kişi Adı - Katkıları</p>
+        <p>3. Kişi Adı - Katkıları</p>
+    </div>
+</body>
+</html>
