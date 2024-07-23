@@ -59,10 +59,8 @@
             display: block;
         }
 
-        @keyframes scroll {
-            0% { transform: translateY(100%); }
-            100% { transform: translateY(-100%); }
-        }
+       
+        
 
         h1 {
             color: aliceblue;
@@ -111,7 +109,31 @@
         
         
 
-       
+
+
+        .contributors {
+            background-color: #222;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            position: center;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .metin {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            animation: scroll 30s linear infinite;
+        }
+
+        .metin img {
+            width: 100%;
+            height: auto;
+            display: block;}
 
         
 
@@ -120,23 +142,13 @@
     </style>
 </head>
 <body>
-    <!-- Başlangıç mesajı -->
-    <audio id="background-music" src="HTML Tutorial - Google Chrome 2024-07-23 00-51-24 (online-audio-converter.com).mp3" loop></audio>
-    <div id="start-message">Müziği başlatmak için tıklayın</div>
 
-    <!-- Yan menü -->
-    <div class="sidebar">
-        <div class="image-container">
-            <img src="agegrup.png" alt="Image 1">
-            <img src="ageofgrup2.png" alt="Image 2">
-            <img src="ageofgrup3.png" alt="Image 3">
-            <img src="ageofgrup4.png" alt="Image 4">
-            <img src="agegrup5.png" alt="Image 5">
-            <img src="agegrup6.png" alt="Image 6">
-            <img src="agegrup7.png" alt="Image 7">
-        </div>
-    </div>
 
+
+
+
+
+<div class="metin">
     <h1>Age of Empires II Kadiköy B&M Kafe / İstanbul / Türkiye (Her Cumartesi)</h1>
 
     <!-- İçerik bağlantıları -->
@@ -157,6 +169,47 @@
     <p><a href="hd-hotkeys.zip">HD HOTKEYLER (Tüm HD hotkeyler)</a></p><br><br><br>
 
     <p><a href="https://www.gameranger.com/"><strong>GameRanger</strong><br><br><br> - Çok oyunculu oynamak için gereken ek uygulama</a></p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Başlangıç mesajı -->
+    <audio id="background-music" src="HTML Tutorial - Google Chrome 2024-07-23 00-51-24 (online-audio-converter.com).mp3" loop></audio>
+    <div id="start-message">Müziği başlatmak için tıklayın</div>
+
+    <!-- Yan menü -->
+    <div class="sidebar">
+        <div class="image-container">
+            <img src="agegrup.png" alt="Image 1">
+            <img src="ageofgrup2.png" alt="Image 2">
+            <img src="ageofgrup3.png" alt="Image 3">
+            <img src="ageofgrup4.png" alt="Image 4">
+            <img src="agegrup5.png" alt="Image 5">
+            <img src="agegrup6.png" alt="Image 6">
+            <img src="agegrup7.png" alt="Image 7">
+        </div>
+    </div>
+
+    
 
     <!-- Emekleri Geçenler Bölümü -->
     <div class="contributors">
@@ -164,6 +217,7 @@
         <p>Bayramx / Cinayii / Byzantines / Cody / Dodi / Fratious / Hamzat / Lost / Mefe / Prowess / Strikeman / The Karga / Turk / Yolcu</p>
     </div>
 
+    
     
     
     <!-- Google AdSense Script -->
