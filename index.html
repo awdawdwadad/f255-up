@@ -5,116 +5,106 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>F255</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
     <style>
         body {
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            color: aliceblue;
-            background-image: url("ageback.png");
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            flex-direction: column;
-            font-family: 'Roboto', sans-serif;
-        }
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    color: aliceblue;
+    background-image: url("ageback.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto', sans-serif;
+}
 
-        #start-message {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5em;
-            z-index: 1000;
-        }
+#start-message {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    z-index: 1000;
+}
 
-        .sidebar {
-            position: fixed;
-            right: 0;
-            top: 0;
-            width: 300px;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            z-index: 0;
-        }
-        .photo-slide {
-            display: inline-flex;
-            flex-direction: column;
-            white-space: nowrap;
-            animation: 5s scroll infinite linear
-        }
+h1 {
+    color: aliceblue;
+    margin: 20px;
+}
 
-        .image-container {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            animation: scroll 5s linear infinite;
-        }
+a {
+    text-decoration: none;
+    color: azure;
+}
 
-        .image-container img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
+.content {
+    flex: 1;
+    padding: 20px;
+    width: 50%;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.8);
+    position: relative;
+    border-radius: 8px;
+}
 
-        @keyframes scroll {
-            0% { transform: translateY(100%); }
-            100% { transform: translateY(-100%); }
-        }
+.owl-carousel .item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh; /* Slayt yüksekliği sayfanın %60'ı */
+    background: none; /* Arka planı kaldırdık */
+    color: #fff;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
 
-        h1 {
-            color: aliceblue;
-            margin: 20px;
-        }
+.owl-carousel img {
+    max-width: 100%;
+    height: auto;
+}
 
-        a {
-            text-decoration: none;
-            color: azure;
-        }
+.contributors-slider {
+    margin: 0 auto;
+    padding: 10px;
+}
 
-        .content {
-            flex: 1;
-            padding: 20px;
-            width: 50%; /* İçeriğin genişliği küçültüldü */
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-            background: rgba(0, 0, 0, 0.8);
-            position: relative;
-            border-radius: 8px;
-        }
+.contributors-slider .item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px; /* Slayt yüksekliği */
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-align: center;
+}
 
-        .contributors {
-            background: rgba(0, 0, 0, 0.5);
-            color: #fff;
-            padding: 10px;
-            text-align: center;
-            position: fixed;
-            bottom: 0;
-            width: calc(100% - 300px); /* Sidebar genişliği kadar azaltılmış genişlik */
-            margin-right: 300px; /* Sidebar'ın genişliği kadar sağ boşluk bırakır */
-            box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.5);
-        }
+.contributors-slider h2 {
+    margin: 0;
+    font-size: 0.8em;
+}
 
-        .contributors h2 {
-            margin: 0;
-            font-size: 1.5em;
-        }
-
-        .contributors p {
-            margin: 10px 0;
-            line-height: 1.5;
+.owl-stage {
+    height: auto; /* Otomatik yüksekliği ayarla */
+}
         }
     </style>
 </head>
@@ -123,64 +113,102 @@
     <audio id="background-music" src="HTML Tutorial - Google Chrome 2024-07-23 00-51-24 (online-audio-converter.com).mp3" loop></audio>
     <div id="start-message">Müziği başlatmak için tıklayın</div>
 
-    <!-- Yan menü -->
-    <div class="sidebar">
-        <div class="photo-slide">
-            <img src="agegrup.png" alt="Image 1">
-            <img src="ageofgrup2.png" alt="Image 2">
-            <img src="ageofgrup3.png" alt="Image 3">
-            <img src="ageofgrup4.png" alt="Image 4">
-            <img src="agegrup5.png" alt="Image 5">
-            <img src="agegrup6.png" alt="Image 6">
-            <img src="agegrup7.png" alt="Image 7">
-        </div>
-        <div class="photo-slide">
-            <img src="agegrup.png" alt="Image 1">
-            <img src="ageofgrup2.png" alt="Image 2">
-            <img src="ageofgrup3.png" alt="Image 3">
-            <img src="ageofgrup4.png" alt="Image 4">
-            <img src="agegrup5.png" alt="Image 5">
-            <img src="agegrup6.png" alt="Image 6">
-            <img src="agegrup7.png" alt="Image 7">
-        </div>
+    <!-- Contributors Slider -->
+    <div class="contributors-slider owl-carousel">
+        <div class="item"><h2>Bayramx</h2></div>
+        <div class="item"><h2>Cinayii</h2></div>
+        <div class="item"><h2>Byzantin</h2></div>
+        <div class="item"><h2>Cody</h2></div>
+        <div class="item"><h2>Dodi</h2></div>
+        <div class="item"><h2>Fratious</h2></div>
+        <div class="item"><h2>Hamzat</h2></div>
+        <div class="item"><h2>Lost</h2></div>
+        <div class="item"><h2>Mefe</h2></div>
+        <div class="item"><h2>Prowess</h2></div>
+        <div class="item"><h2>Strikeman</h2></div>
+        <div class="item"><h2>The Karga</h2></div>
+        <div class="item"><h2>Turk</h2></div>
+        <div class="item"><h2>Yolcu</h2></div>
     </div>
 
     <!-- Ana içerik -->
     <div class="content">
         <h1>Age of Empires II Kadiköy B&M Kafe / İstanbul / Türkiye (Her Cumartesi)</h1>
-        <div>
-            <img src="ageofforgatten.jpeg" width="100" height="70" alt="Age of Empires II Forgotten Empires">
-            <a href="age.rar">age of empires II Forgotten Empires Full</a>
+        
+        <!-- Owl Carousel -->
+        <div class="owl-carousel">
+            <div class="item"><img src="agegrup.png" alt="Image 1"></div>
+            <div class="item"><img src="ageofgrup2.png" alt="Image 2"></div>
+            <div class="item"><img src="ageofgrup3.png" alt="Image 3"></div>
+            <div class="item"><img src="ageofgrup4.png" alt="Image 4"></div>
+            <div class="item"><img src="agegrup5.png" alt="Image 5"></div>
+            <div class="item"><img src="agegrup6.png" alt="Image 6"></div>
+            <div class="item"><img src="agegrup7.png" alt="Image 7"></div>
         </div>
+
+        <!-- Büyütülmüş resim ve açıklama -->
+        <div class="large-image-container">
+            <img src="ageofforgatten.jpeg" alt="Age of Empires II Forgotten Empires">
+            <div class="description">
+                <a href="age.rar">age of empires II Forgotten Empires Full</a>
+            </div>
+        </div>
+
+        <!-- Ek resim ve açıklama -->
+        <div class="additional-image-container">
+            <img src="aeo2.1.png" alt="AOE II">
+            <div class="additional-description">
+                <a href="https://www.f255.net/actof/aox.rar">For GAME RANGER - AGE OF EMPIRES (AOX). (Tavsiye Edilen)</a>
+            </div>
+        </div>
+
         <div>
             <a href="wololo.rar">For GAME RANGER - VERSION CHANGER (1.0, 1.0C, 1.0E etc.)</a>
-        </div>
-        <div>
-            <img src="aeo2.1.png" width="100" height="70" alt="AOE II">
-            <a href="https://www.f255.net/actof/aox.rar">For GAME RANGER - AGE OF EMPIRES (AOX). (Tavsiye Edilen)</a>
         </div>
         <p><a href="hd-hotkeys.zip">HD HOTKEYLER (Tüm HD hotkeyler)</a></p>
         <p><a href="https://www.gameranger.com/"><strong>GameRanger</strong><br><br> - Çok oyunculu oynamak için gereken ek uygulama</a></p>
     </div>
 
-    <!-- Emekleri Geçenler Bölümü -->
-    <div class="contributors">
-        <h2>Yıllarını Verenler</h2>
-        <p>Bayramx / Cinayii / Byzantin / Cody / Dodi / Fratious / Hamzat / Lost / Mefe / Prowess / Strikeman / The Karga / Turk / Yolcu</p>
-    </div>
-
     <!-- Google AdSense Script -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6999880595458369" crossorigin="anonymous"></script>
 
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
+    <!-- Owl Carousel JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
     <script>
-        window.onload = function() {
+        $(document).ready(function(){
+            // Owl Carousel for main images
+            var owl = $('.owl-carousel');
+            owl.owlCarousel({
+                items: 4,
+                loop: true,
+                margin: 10,
+                autoplay: false, // Autoplay kapalı
+                autoplayTimeout: 1000,
+                autoplayHoverPause: true
+            });
+
+            // Contributors slider
+            var contributorsSlider = $('.contributors-slider');
+            contributorsSlider.owlCarousel({
+                items: 1,
+                loop: true,
+                margin: 0,
+                autoplay: false, // Autoplay kapalı
+                autoplayTimeout: 3000,
+                autoplayHoverPause: true
+            });
+
+            // Başlangıçta müziği başlat
             const backgroundAudio = document.getElementById('background-music');
             const startMessage = document.getElementById('start-message');
-            
             backgroundAudio.volume = 1.0;
             backgroundAudio.play();
             startMessage.style.display = 'none';
-        };
+        });
     </script>
 </body>
 </html>
