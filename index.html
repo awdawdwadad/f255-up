@@ -14,15 +14,18 @@
         body {
     margin: 0;
     padding: 0;
-    height: 100vh;
+    height: 100%;;
+    width: 100%;
     color: aliceblue;
     background-image: url("ageback.png");
     background-repeat: no-repeat;
     background-size: cover;
+    background-color: black;
+    overflow: hidden;
     background-position: center;
     display: flex;
     flex-direction: column;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 #start-message {
@@ -66,7 +69,8 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 60vh; /* Slayt yüksekliği sayfanın %60'ı */
+    width: 99%;
+   /* height: 60vh; /* Slayt yüksekliği sayfanın %60'ı */
     background: none; /* Arka planı kaldırdık */
     color: #fff;
     padding: 0;
@@ -105,7 +109,27 @@ a {
 .owl-stage {
     height: auto; /* Otomatik yüksekliği ayarla */
 }
-        }
+
+.myTable {
+        width: 100%;
+        text-align: center;
+        table-layout: fixed;
+    }
+    
+    .myTable td {
+        width: 50%;
+        height: 200px;
+        vertical-align: middle;
+    }
+    
+    .myTable img {
+        display: block;
+        margin: 0 auto;
+    }
+    
+    .myTable .description, .myTable .additional-description {
+        margin-top: 10px;
+    }
     </style>
 </head>
 <body>
@@ -148,24 +172,36 @@ a {
 
         <!-- Büyütülmüş resim ve açıklama -->
         <div class="large-image-container">
-            <img src="ageofforgatten.jpeg" alt="Age of Empires II Forgotten Empires">
-            <div class="description">
-                <a href="age.rar">age of empires II Forgotten Empires Full</a>
-            </div>
+
         </div>
 
         <!-- Ek resim ve açıklama -->
         <div class="additional-image-container">
-            <img src="aeo2.1.png" alt="AOE II">
-            <div class="additional-description">
-                <a href="https://www.f255.net/actof/aox.rar">For GAME RANGER - AGE OF EMPIRES (AOX). (Tavsiye Edilen)</a>
-            </div>
+
         </div>
+
+        <table class="myTable">
+            <tr>
+                <td>
+                    <img src="ageofforgatten.jpeg" alt="Age of Empires II Forgotten Empires">
+                    <div class="description">
+                        <a href="age.rar">age of empires II Forgotten Empires Full</a>
+                    </div>
+                </td>
+                <td>
+                    <img src="aeo2.1.png" alt="AOE II" style="height: 200px;">
+                    <div class="additional-description">
+                        <a href="https://www.f255.net/actof/aox.rar">For GAME RANGER - AGE OF EMPIRES (AOX). (Tavsiye Edilen)</a><br><br><br>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
 
         <div>
             <a href="wololo.rar">For GAME RANGER - VERSION CHANGER (1.0, 1.0C, 1.0E etc.)</a>
         </div>
-        <p><a href="hd-hotkeys.zip">HD HOTKEYLER (Tüm HD hotkeyler)</a></p>
+        <p><a href="hd-hotkeys.zip">HD HOTKEYLER (Tüm HD hotkeyler)</a></p><br><br><br>
         <p><a href="https://www.gameranger.com/"><strong>GameRanger</strong><br><br> - Çok oyunculu oynamak için gereken ek uygulama</a></p>
     </div>
 
