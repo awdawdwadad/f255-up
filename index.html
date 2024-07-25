@@ -5,131 +5,148 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>F255</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
     <!-- Owl Carousel CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
 
     <style>
         body {
-    margin: 0;
-    padding: 0;
-    height: 100%;;
-    width: 100%;
-    color: aliceblue;
-    background-image: url("ageback.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-color: black;
-    overflow: hidden;
-    background-position: center;
-    display: flex;
-    flex-direction: column;
-    font-family: 'Times New Roman', Times, serif;
-}
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            color: aliceblue;
+            background-image: url("ageback.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-color: black;
+            overflow: hidden;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            font-family: 'Times New Roman', Times, serif;
+        }
 
-#start-message {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5em;
-    z-index: 1000;
-}
+        #start-message {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            z-index: 1000;
+        }
 
-h1 {
-    color: aliceblue;
-    margin: 20px;
-}
+        h1 {
+            color: aliceblue;
+            margin: 20px;
+        }
 
-a {
-    text-decoration: none;
-    color: azure;
-}
+        a {
+            text-decoration: none;
+            color: azure;
+        }
 
-.content {
-    flex: 1;
-    padding: 20px;
-    width: 50%;
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-    background: rgba(0, 0, 0, 0.8);
-    position: relative;
-    border-radius: 8px;
-}
+        .content {
+            flex: 1;
+            padding: 20px;
+            width: 50%;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.8);
+            position: relative;
+            border-radius: 8px;
+        }
 
-.owl-carousel .item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 99%;
-   /* height: 60vh; /* Slayt yüksekliği sayfanın %60'ı */
-    background: none; /* Arka planı kaldırdık */
-    color: #fff;
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
+        .owl-carousel .item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 99%;
+            background: none;
+            color: #fff;
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
 
-.owl-carousel img {
-    max-width: 100%;
-    height: auto;
-}
+        .owl-carousel img {
+            max-width: 100%;
+            height: auto;
+        }
 
-.contributors-slider {
-    margin: 0 auto;
-    padding: 10px;
-}
+        .contributors-slider {
+            width: 100%;
+            padding: 0;
+            overflow: hidden;
+            margin: 0 auto;
+            height: 60px; /* Slayt yüksekliği */
+        }
 
-.contributors-slider .item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 60px; /* Slayt yüksekliği */
-    background: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    text-align: center;
-}
+        .contributors-slider .item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 60px; /* Slayt yüksekliği */
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            text-align: center;
+        }
 
-.contributors-slider h2 {
-    margin: 0;
-    font-size: 0.8em;
-}
+        .contributors-slider h2 {
+            margin: 0;
+            font-size: 0.8em;
+        }
 
-.owl-stage {
-    height: auto; /* Otomatik yüksekliği ayarla */
-}
+        .owl-stage {
+            height: auto; /* Otomatik yüksekliği ayarla */
+        }
 
-.myTable {
-        width: 100%;
-        text-align: center;
-        table-layout: fixed;
-    }
-    
-    .myTable td {
-        width: 50%;
-        height: 200px;
-        vertical-align: middle;
-    }
-    
-    .myTable img {
-        display: block;
-        margin: 0 auto;
-    }
-    
-    .myTable .description, .myTable .additional-description {
-        margin-top: 10px;
-    }
+        .myTable {
+            width: 100%;
+            text-align: center;
+            table-layout: fixed;
+        }
+
+        .myTable td {
+            width: 50%;
+            height: 200px;
+            vertical-align: middle;
+        }
+
+        .myTable img {
+            display: block;
+            margin: 0 auto;
+        }
+
+        .myTable .description, .myTable .additional-description {
+            margin-top: 10px;
+        }
+
+        .hidden {
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .yazı {
+            font-family: "Bebas Neue", sans-serif;;
+        }
+        .baslık{
+            font-family: "Anton", sans-serif;;
+        }
     </style>
 </head>
 <body>
@@ -157,7 +174,7 @@ a {
 
     <!-- Ana içerik -->
     <div class="content">
-        <h1>Age of Empires II Kadiköy B&M Kafe / İstanbul / Türkiye (Her Cumartesi)</h1>
+        <h1 class="baslık" >Age of Empires II  </h1>
         
         <!-- Owl Carousel -->
         <div class="owl-carousel">
@@ -185,24 +202,24 @@ a {
                 <td>
                     <img src="ageofforgatten.jpeg" alt="Age of Empires II Forgotten Empires">
                     <div class="description">
-                        <a href="age.rar">age of empires II Forgotten Empires Full</a>
+                        <a href="age.rar" class="yazı">age of empires II Forgotten Empires Full</a><br><br><br><br><br>
                     </div>
                 </td>
                 <td>
                     <img src="aeo2.1.png" alt="AOE II" style="height: 200px;">
                     <div class="additional-description">
-                        <a href="https://www.f255.net/actof/aox.rar">For GAME RANGER - AGE OF EMPIRES (AOX). (Tavsiye Edilen)</a><br><br><br>
+                        <a href="https://www.f255.net/actof/aox.rar" class="yazı">FOR GAME RANGER - AGE OF EMPIRES (AOX). (Tavsiye Edilen)</a><br><br><br><br><br><br>
                     </div>
                 </td>
             </tr>
         </table>
 
-
         <div>
-            <a href="wololo.rar">For GAME RANGER - VERSION CHANGER (1.0, 1.0C, 1.0E etc.)</a>
+            <a href="wololo.rar" class="yazı">For GAME RANGER - VERSION CHANGER (1.0, 1.0C, 1.0E etc.)</a>
         </div>
-        <p><a href="hd-hotkeys.zip">HD HOTKEYLER (Tüm HD hotkeyler)</a></p><br><br><br>
-        <p><a href="https://www.gameranger.com/"><strong>GameRanger</strong><br><br> - Çok oyunculu oynamak için gereken ek uygulama</a></p>
+        <p class="yazı"><a href="hd-hotkeys.zip">HD HOTKEYLER (Tüm HD hotkeyler)</a></p><br><br><br>
+       
+        <p class="yazı"><a href="https://www.gameranger.com/"><strong>GameRanger</strong><br><br> - Çok oyunculu oynamak için gereken ek uygulama</a></p>
     </div>
 
     <!-- Google AdSense Script -->
@@ -244,6 +261,22 @@ a {
             backgroundAudio.volume = 1.0;
             backgroundAudio.play();
             startMessage.style.display = 'none';
+
+            // Slaytın görünürlüğünü kaydırma pozisyonuna göre ayarla
+            const carousel = document.querySelector('.contributors-slider');
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        carousel.classList.remove('hidden');
+                    } else {
+                        carousel.classList.add('hidden');
+                    }
+                });
+            }, {
+                threshold: 0.1 // Slayt %10 görünür olduğunda algılar
+            });
+
+            observer.observe(carousel);
         });
     </script>
 </body>
