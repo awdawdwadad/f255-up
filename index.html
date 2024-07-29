@@ -6,8 +6,8 @@
     <title>F255</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
     <!-- Owl Carousel CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
@@ -59,7 +59,7 @@
         .content {
             flex: 1;
             padding: 20px;
-            width: 50%;
+            width: 90%;
             max-width: 800px;
             margin: 0 auto;
             text-align: center;
@@ -142,142 +142,213 @@
         }
 
         .yazı {
-            font-family: "Bebas Neue", sans-serif;;
+            font-family: "Bebas Neue", sans-serif;
         }
         .baslık{
-            font-family: "Anton", sans-serif;;
+            font-family: "Anton", sans-serif;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .content {
+                width: 95%;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .contributors-slider .item h2 {
+                font-size: 0.7em;
+            }
+
+            .myTable td {
+                height: 150px;
+            }
+
+            .myTable .description, .myTable .additional-description {
+                font-size: 0.9em;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                width: 100%;
+                padding: 10px;
+            }
+
+            .contributors-slider {
+                height: 50px;
+            }
+
+            .contributors-slider h2 {
+                font-size: 0.6em;
+            }
+
+            .myTable td {
+                height: 100px;
+            }
+
+            .myTable .description, .myTable .additional-description {
+                font-size: 0.8em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #start-message {
+                font-size: 1.2em;
+            }
+
+            .contributors-slider {
+                height: 40px;
+            }
+
+            .contributors-slider h2 {
+                font-size: 0.5em;
+            }
+
+            .myTable td {
+                height: auto;
+                padding: 10px;
+            }
+
+            .myTable img {
+                max-width: 80%;
+            }
+
+            .myTable .description, .myTable .additional-description {
+                font-size: 0.7em;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Başlangıç mesajı -->
-    <audio id="background-music" src="HTML Tutorial - Google Chrome 2024-07-23 00-51-24 (online-audio-converter.com).mp3" loop></audio>
-    <div id="start-message">Müziği başlatmak için tıklayın</div>
+<!-- Başlangıç mesajı -->
+<audio id="background-music" src="HTML Tutorial - Google Chrome 2024-07-23 00-51-24 (online-audio-converter.com).mp3" loop></audio>
+<div id="start-message">Müziği başlatmak için tıklayın</div>
 
-    <!-- Contributors Slider -->
-    <div class="contributors-slider owl-carousel">
-        <div class="item"><h2>Bayramx</h2></div>
-        <div class="item"><h2>Cinayii</h2></div>
-        <div class="item"><h2>Byzantin</h2></div>
-        <div class="item"><h2>Cody</h2></div>
-        <div class="item"><h2>Dodi</h2></div>
-        <div class="item"><h2>Fratious</h2></div>
-        <div class="item"><h2>Hamzat</h2></div>
-        <div class="item"><h2>Lost</h2></div>
-        <div class="item"><h2>Mefe</h2></div>
-        <div class="item"><h2>Prowess</h2></div>
-        <div class="item"><h2>Strikeman</h2></div>
-        <div class="item"><h2>The Karga</h2></div>
-        <div class="item"><h2>Turk</h2></div>
-        <div class="item"><h2>Yolcu</h2></div>
+<!-- Contributors Slider -->
+<div class="contributors-slider owl-carousel">
+    <div class="item"><h2><a href="bayramx.html">Bayramx</h2></a></div>
+    <div class="item"><a href="Cinayii.html"><h2>Cinayii</h2></a></div>
+    <div class="item"><a href="Byzantin.html"><h2>Byzantin</h2></a></div>
+    <div class="item"><a href="Cody.html"><h2>Cody</h2></a></div>
+    <div class="item"><a href="Dodi.html"><h2>Dodi</h2></a></div>
+    <div class="item"><h2><a href="Fratious.html">Fratious</h2></a></div>
+    <div class="item"><h2><a href="Hamzat.html">Hamzat</h2></a></div>
+    <div class="item"><h2><a href="Lost.html">Lost</h2></a></div>
+    <div class="item"><h2><a href="Mefe.html">Mefe</h2></a></div>
+    <div class="item"><h2><a href="Prowess.html">Prowess</h2></a></div>
+    <div class="item"><h2><a href="Strikeman.html">Strikeman</h2></a></div>
+    <div class="item"><h2><a href="The Karga.html">The Karga</h2></a></div>
+    <div class="item"><h2><a href="Turk.html">Turk</h2></a></div>
+    <div class="item"><h2><a href="Yolcu.html">Yolcu</h2></a></div>
+</div>
+
+<!-- Ana içerik -->
+<div class="content">
+    <h1 class="baslık">Age of Empires III</h1>
+
+    <!-- Owl Carousel -->
+    <div class="owl-carousel">
+        <div class="item"><img src="agegrup.png" alt="Image 1"></div>
+        <div class="item"><img src="ageofgrup2.png" alt="Image 2"></div>
+        <div class="item"><img src="ageofgrup3.png" alt="Image 3"></div>
+        <div class="item"><img src="ageofgrup4.png" alt="Image 4"></div>
+        <div class="item"><img src="agegrup5.png" alt="Image 5"></div>
+        <div class="item"><img src="agegrup6.png" alt="Image 6"></div>
+        <div class="item"><img src="agegrup7.png" alt="Image 7"></div>
     </div>
 
-    <!-- Ana içerik -->
-    <div class="content">
-        <h1 class="baslık" >Age of Empires II  </h1>
-        
-        <!-- Owl Carousel -->
-        <div class="owl-carousel">
-            <div class="item"><img src="agegrup.png" alt="Image 1"></div>
-            <div class="item"><img src="ageofgrup2.png" alt="Image 2"></div>
-            <div class="item"><img src="ageofgrup3.png" alt="Image 3"></div>
-            <div class="item"><img src="ageofgrup4.png" alt="Image 4"></div>
-            <div class="item"><img src="agegrup5.png" alt="Image 5"></div>
-            <div class="item"><img src="agegrup6.png" alt="Image 6"></div>
-            <div class="item"><img src="agegrup7.png" alt="Image 7"></div>
-        </div>
+    <!-- Büyütülmüş resim ve açıklama -->
+    <div class="large-image-container">
 
-        <!-- Büyütülmüş resim ve açıklama -->
-        <div class="large-image-container">
-
-        </div>
-
-        <!-- Ek resim ve açıklama -->
-        <div class="additional-image-container">
-
-        </div>
-
-        <table class="myTable">
-            <tr>
-                <td>
-                    <img src="ageofforgatten.jpeg" alt="Age of Empires II Forgotten Empires">
-                    <div class="description">
-                        <a href="https://www.f255.net/actof/age.rar" class="yazı" title="Age Of Empires II Forgatten Empires">age of empires II Forgotten Empires Full</a><br><br><br><br><br>
-                    </div>
-                </td>
-                <td>
-                    <img src="aeo2.1.png" alt="AOE II" style="height: 200px;">
-                    <div class="additional-description">
-                        <a href="https://www.f255.net/actof/aox.rar" class="yazı" title="Age Of Empires II">FOR GAME RANGER - AGE OF EMPIRES (AOX). (Tavsiye Edilen)</a><br><br><br><br><br><br>
-                    </div>
-                </td>
-            </tr>
-        </table>
-
-        <div>
-            <a href="wololo.rar" class="yazı">For GAME RANGER - VERSION CHANGER (1.0, 1.0C, 1.0E etc.)</a><br><br>
-        </div>
-        <p class="yazı"><a href="https://www.f255.net/actof/hd-hotkeys.zip" title="HD HOTKEYLER">HD HOTKEYLER (Tüm HD hotkeyler)</a></p><br><br><br>
-       
-        <p class="yazı"><a href="https://www.gameranger.com/" title="Game Ranger"><strong>GameRanger</strong><br><br> - Çok oyunculu oynamak için gereken ek uygulama</a></p>
     </div>
 
-    <!-- Google AdSense Script -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6999880595458369" crossorigin="anonymous"></script>
+    <!-- Ek resim ve açıklama -->
+    <div class="additional-image-container">
 
-    <!-- jQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    
-    <!-- Owl Carousel JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    </div>
 
-    <script>
-        $(document).ready(function(){
-            // Owl Carousel for main images
-            var owl = $('.owl-carousel');
-            owl.owlCarousel({
-                items: 4,
-                loop: true,
-                margin: 10,
-                autoplay: false, // Autoplay kapalı
-                autoplayTimeout: 1000,
-                autoplayHoverPause: true
-            });
+    <table class="myTable">
+        <tr>
+            <td>
+                <img src="ageofforgatten.jpeg" alt="Age of Empires II Forgotten Empires">
+                <div class="description">
+                    <a href="https://www.f255.net/actof/age.rar" class="yazı" title="Age Of Empires II Forgatten Empires">age of empires II Forgotten Empires Full</a><br><br><br><br><br>
+                </div>
+            </td>
+            <td>
+                <img src="aeo2.1.png" alt="AOE II" style="height: 200px;">
+                <div class="additional-description">
+                    <a href="https://www.f255.net/actof/aox.rar" class="yazı" title="Age Of Empires II">FOR GAME RANGER - AGE OF EMPIRES (AOX). (Tavsiye Edilen)</a><br><br><br><br><br><br>
+                </div>
+            </td>
+        </tr>
+    </table>
 
-            // Contributors slider
-            var contributorsSlider = $('.contributors-slider');
-            contributorsSlider.owlCarousel({
-                items: 1,
-                loop: true,
-                margin: 0,
-                autoplay: false, // Autoplay kapalı
-                autoplayTimeout: 3000,
-                autoplayHoverPause: true
-            });
+    <div>
+        <a href="wololo.rar" class="yazı">For GAME RANGER - VERSION CHANGER (1.0, 1.0C, 1.0E etc.)</a><br><br>
+    </div>
+    <p class="yazı"><a href="https://www.f255.net/actof/hd-hotkeys.zip" title="HD HOTKEYLER">HD HOTKEYLER (Tüm HD hotkeyler)</a></p><br><br><br>
 
-            // Başlangıçta müziği başlat
-            const backgroundAudio = document.getElementById('background-music');
-            const startMessage = document.getElementById('start-message');
-            backgroundAudio.volume = 1.0;
-            backgroundAudio.play();
-            startMessage.style.display = 'none';
+    <p class="yazı"><a href="https://www.gameranger.com/" title="Game Ranger"><strong>GameRanger</strong><br><br> - Çok oyunculu oynamak için gereken ek uygulama</a></p>
+</div>
 
-            // Slaytın görünürlüğünü kaydırma pozisyonuna göre ayarla
-            const carousel = document.querySelector('.contributors-slider');
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        carousel.classList.remove('hidden');
-                    } else {
-                        carousel.classList.add('hidden');
-                    }
-                });
-            }, {
-                threshold: 0.1 // Slayt %10 görünür olduğunda algılar
-            });
+<!-- Google AdSense Script -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6999880595458369" crossorigin="anonymous"></script>
 
-            observer.observe(carousel);
+<!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<!-- Owl Carousel JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        // Owl Carousel for main images
+        var owl = $('.owl-carousel');
+        owl.owlCarousel({
+            items: 4,
+            loop: true,
+            margin: 10,
+            autoplay: false, // Autoplay kapalı
+            autoplayTimeout: 1000,
+            autoplayHoverPause: true
         });
-    </script>
+
+        // Contributors slider
+        var contributorsSlider = $('.contributors-slider');
+        contributorsSlider.owlCarousel({
+            items: 1,
+            loop: true,
+            margin: 0,
+            autoplay: false, // Autoplay kapalı
+            autoplayTimeout: 3000,
+            autoplayHoverPause: true
+        });
+
+        // Başlangıçta müziği başlat
+        const backgroundAudio = document.getElementById('background-music');
+        const startMessage = document.getElementById('start-message');
+        backgroundAudio.volume = 1.0;
+        backgroundAudio.play();
+        startMessage.style.display = 'none';
+
+        // Slaytın görünürlüğünü kaydırma pozisyonuna göre ayarla
+        const carousel = document.querySelector('.contributors-slider');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    carousel.classList.remove('hidden');
+                } else {
+                    carousel.classList.add('hidden');
+                }
+            });
+        }, {
+            threshold: 0.1 // Slayt %10 görünür olduğunda algılar
+        });
+
+        observer.observe(carousel);
+    });
+</script>
 </body>
 </html>
