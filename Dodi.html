@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kişi Bilgisi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .info {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .photo {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #e0e0e0;
+        }
+
+        .photo img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        h1 {
+            margin-top: 0;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="info">
+            <h1>Kişi Bilgisi</h1>
+            <p><strong>Adı:</strong> Ahmet Yılmaz</p>
+            <p><strong>Doğum Tarihi:</strong> 01 Ocak 1980</p>
+            <p><strong>Meslek:</strong> Yazılım Geliştirici</p>
+            <p><strong>Hakkında:</strong> Ahmet Yılmaz, yazılım geliştirme alanında 20 yılı aşkın deneyime sahip bir profesyoneldir. Çeşitli büyük projelerde görev almıştır ve yazılım mimarisi konusunda uzmandır.</p>
+        </div>
+        <div class="photo">
+            <img src="person-photo.jpg" alt="Kişi Fotoğrafı">
+        </div>
+    </div>
+</body>
+</html>
