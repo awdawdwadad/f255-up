@@ -11,6 +11,7 @@
             color: #FFCC00;
             margin: 0;
             padding: 20px;
+            position: relative; /* Ekleme: Konumlandırma için */
         }
         h1 {
             text-align: center;
@@ -93,9 +94,25 @@
         .form-container button:hover {
             background-color: #FF9900;
         }
+        .back-to-menu-button {
+            position: absolute; /* Ekleme: Sol üst köşede konumlandırma */
+            top: 20px;
+            left: 20px;
+            background: #FFCC00;
+            color: #333;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .back-to-menu-button:hover {
+            background: #FF9900;
+        }
     </style>
 </head>
 <body>
+    <button class="back-to-menu-button" onclick="window.location.href='index.html'">Ana Menüye Dön</button>
     <h1>Liderlik Tablosu</h1>
 
     <div class="form-container">

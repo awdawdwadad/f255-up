@@ -143,6 +143,19 @@
         .modal-content button:hover {
             background: #e6b800;
         }
+        .back-to-menu-button {
+            background: #333;
+            color: #FFCC00;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+        .back-to-menu-button:hover {
+            background: #444;
+        }
     </style>
 </head>
 <body>
@@ -159,6 +172,7 @@
                 <button onclick="loginWithFacebook()" class="social-button facebook-button">Facebook ile Giriş Yap</button>
                 <a href="#" class="social-button google-button">Google ile Giriş Yap</a>
             </div>
+            <button class="back-to-menu-button" onclick="window.location.href='index.html'">Ana Menüye Dön</button>
         </form>
     </div>
 
@@ -216,42 +230,44 @@
             // Yönlendirme yapılacak sayfa
             window.location.href = 'index.html';
         });
+
         window.fbAsyncInit = function() {
-        FB.init({
-            appId      : 'YOUR_APP_ID', // Facebook App ID'nizi buraya ekleyin
-            cookie     : true,
-            xfbml      : true,
-            version    : 'v12.0'
-        });
+            FB.init({
+                appId      : 'YOUR_APP_ID', // Facebook App ID'nizi buraya ekleyin
+                cookie     : true,
+                xfbml      : true,
+                version    : 'v12.0'
+            });
 
-        FB.AppEvents.logPageView();   
-    };
+            FB.AppEvents.logPageView();   
+        };
 
-    function checkLoginState() {
-        FB.getLoginStatus(function(response) {
-            if (response.status === 'connected') {
-                // Kullanıcı Facebook'ta giriş yapmış
-                console.log('User is logged in with Facebook');
-            } else {
-                // Kullanıcı giriş yapmamış
-                console.log('User is not logged in with Facebook');
-            }
-        });
-    }
+        function checkLoginState() {
+            FB.getLoginStatus(function(response) {
+                if (response.status === 'connected') {
+                    // Kullanıcı Facebook'ta giriş yapmış
+                    console.log('User is logged in with Facebook');
+                } else {
+                    // Kullanıcı giriş yapmamış
+                    console.log('User is not logged in with Facebook');
+                }
+            });
+        }
 
-    function loginWithFacebook() {
-        FB.login(function(response) {
-            if (response.authResponse) {
-                console.log('Welcome!  Fetching your information.... ');
-                FB.api('/me', function(response) {
-                    console.log('Good to see you, ' + response.name + '.');
-                });
-            } else {
-                console.log('User cancelled login or failed.');
-            }
-        }, {scope: 'public_profile,email'});
-    }
-    function onSignIn(googleUser) {
+        function loginWithFacebook() {
+            FB.login(function(response) {
+                if (response.authResponse) {
+                    console.log('Welcome!  Fetching your information.... ');
+                    FB.api('/me', function(response) {
+                        console.log('Good to see you, ' + response.name + '.');
+                    });
+                } else {
+                    console.log('User cancelled login or failed.');
+                }
+            }, {scope: 'public_profile,email'});
+        }
+
+        function onSignIn(googleUser) {
             // Kullanıcı başarıyla giriş yaptı
             var profile = googleUser.getBasicProfile();
             console.log('ID: ' + profile.getId());
@@ -273,9 +289,8 @@
             // .then(response => response.json())
             // .then(data => console.log(data));
         }
-    
     </script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://connect.facebook.net/en_US/sdk.js" async defer></script>
 </body>
-
 </html>
