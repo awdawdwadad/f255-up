@@ -11,7 +11,7 @@
             color: #FFCC00;
             margin: 0;
             padding: 20px;
-            position: relative; /* Ekleme: Konumlandırma için */
+            position: relative;
         }
         h1 {
             text-align: center;
@@ -95,7 +95,7 @@
             background-color: #FF9900;
         }
         .back-to-menu-button {
-            position: absolute; /* Ekleme: Sol üst köşede konumlandırma */
+            position: absolute;
             top: 20px;
             left: 20px;
             background: #FFCC00;
@@ -108,6 +108,51 @@
         }
         .back-to-menu-button:hover {
             background: #FF9900;
+        }
+        /* Modal stil */
+        .modal {
+            display: none; /* Varsayılan olarak gizle */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            color: #FFCC00;
+        }
+        .modal-content h2 {
+            font-size: 24px;
+        }
+        .modal-content button {
+            background: #FFCC00;
+            border: none;
+            padding: 10px 20px;
+            color: #000;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+        .modal-content button:hover {
+            background: #FF9900;
+        }
+        .modal-content .icon {
+            font-size: 48px;
+        }
+        .modal-content .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
         }
     </style>
 </head>
@@ -145,6 +190,18 @@
             <!-- Tablo satırları burada yer alacak -->
         </tbody>
     </table>
+
+    <!-- Modal -->
+    <div id="confirmationModal" class="modal">
+        <div class="modal-content">
+            <div class="icon">🗑️</div>
+            <h2>Tabloyu Silmek İstediğinizden Emin Misiniz?</h2>
+            <div class="button-container">
+                <button id="confirmClear">Tamam</button>
+                <button id="cancelClear">İptal</button>
+            </div>
+        </div>
+    </div>
 
     <script>
         // Sayfa yüklendiğinde verileri yükle ve tabloyu sıralama
@@ -270,21 +327,29 @@
 
         // Tabloyu temizleme fonksiyonu
         function clearTable() {
-            const confirmClear = confirm('Tabloyu silmek istediğinizden emin misiniz?');
-            if (confirmClear) {
-                const tbody = document.querySelector('#leaderboard tbody');
-                tbody.innerHTML = ''; // Tabloyu temizle
-                localStorage.removeItem('leaderboard'); // LocalStorage'dan veriyi kaldır
-            }
+            const modal = document.getElementById('confirmationModal');
+            modal.style.display = 'flex'; // Modal'ı göster
         }
+
+        // "Tamam" düğmesine tıklama olayı
+        document.getElementById('confirmClear').addEventListener('click', function() {
+            const tbody = document.querySelector('#leaderboard tbody');
+            tbody.innerHTML = ''; // Tabloyu temizle
+            localStorage.removeItem('leaderboard'); // LocalStorage'dan veriyi kaldır
+            document.getElementById('confirmationModal').style.display = 'none'; // Modal'ı gizle
+        });
+
+        // "İptal" düğmesine tıklama olayı
+        document.getElementById('cancelClear').addEventListener('click', function() {
+            document.getElementById('confirmationModal').style.display = 'none'; // Modal'ı gizle
+        });
 
         // "Tabloyu Sil" düğmesine tıklama olayı
         document.getElementById('clearTable').addEventListener('click', clearTable);
 
-        // Aynı isimde oyuncu olup olmadığını kontrol et
+        // Oyuncu mevcut mu kontrol et
         function isPlayerInTable(name) {
-            const tbody = document.querySelector('#leaderboard tbody');
-            const rows = Array.from(tbody.querySelectorAll('tr'));
+            const rows = Array.from(document.querySelectorAll('#leaderboard tbody tr'));
             return rows.some(row => row.getAttribute('data-name') === name);
         }
     </script>

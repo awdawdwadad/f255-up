@@ -3,111 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giriş Yap</title>
+    <title>Liderlik Tablosu</title>
     <style>
         body {
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(to right, #333, #555);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        .signup-form {
-            width: 300px;
+            background-color: #000;
+            color: #FFCC00;
+            margin: 0;
             padding: 20px;
-            text-align: center;
-            background: #1e1e1e;
-            margin: 50px auto;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            position: relative;
         }
-        .title {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 2.5em;
+        h1 {
+            text-align: center;
             color: #FFCC00;
             margin-bottom: 20px;
         }
-        .txt {
-            outline: 0;
-            background: #333;
-            width: calc(100% - 30px);
-            border: 1px solid #444;
-            margin: 0 0 15px;
-            padding: 15px;
-            box-sizing: border-box;
-            font-size: 14px;
-            border-radius: 8px;
-            color: #FFF;
-            font-family: 'Bebas Neue', sans-serif;
-            transition: background-color 0.3s ease;
-        }
-        .txt:focus {
-            background: #444;
-            border-color: #FFCC00;
-        }
-        input[type="submit"] {
-            font-family: 'Bebas Neue', sans-serif;
-            text-transform: uppercase;
-            outline: 0;
-            background: #FFCC00;
+        table {
             width: 100%;
-            border: 0;
-            padding: 15px;
-            color: #000;
-            font-size: 14px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            cursor: pointer;
-            border-radius: 8px;
-            display: block;
+            border-collapse: collapse;
             margin: 0 auto;
-        }
-        input[type="submit"]:hover {
-            background: #e6b800;
-            transform: scale(1.05);
-        }
-        a {
-            display: block;
-            margin-top: 15px;
-            color: #FFCC00;
-            text-decoration: none;
-            font-size: 14px;
-            transition: color 0.3s ease;
-        }
-        a:hover {
-            color: #e6b800;
-        }
-        .social-buttons {
-            margin-top: 20px;
-        }
-        .social-button {
-            display: block;
-            width: calc(100% - 30px);
-            padding: 15px;
-            margin: 10px auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            background-color: #333;
             border-radius: 8px;
-            color: #FFF;
-            font-size: 14px;
-            font-family: 'Bebas Neue', sans-serif;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 12px;
             text-align: center;
+        }
+        th {
+            background-color: #FFCC00;
+            color: #000;
+            font-size: 16px;
+            border-bottom: 2px solid #FF9900;
+        }
+        td {
+            background-color: #444;
+            border-bottom: 1px solid #555;
+        }
+        tr:nth-child(even) td {
+            background-color: #555;
+        }
+        tr:hover td {
+            background-color: #666;
+        }
+        .header-row {
+            font-weight: bold;
+            color: #FFCC00;
+            background-color: #000;
+        }
+        .header-row td {
+            font-size: 18px;
+        }
+        .rank {
+            font-weight: bold;
+        }
+        .form-container {
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .form-container label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #FFCC00;
+        }
+        .form-container input, .form-container button {
+            margin-top: 10px;
+            padding: 10px;
+            width: 100%;
+            font-size: 16px;
+            color: #000;
+        }
+        .form-container input {
+            border: 1px solid #555;
+            border-radius: 4px;
+            background-color: #444;
+            color: #FFCC00;
+        }
+        .form-container button {
+            background-color: #FFCC00;
+            color: #000;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .form-container button:hover {
+            background-color: #FF9900;
+        }
+        .back-to-menu-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: #FFCC00;
+            color: #333;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
-        .facebook-button {
-            background: #3b5998;
-        }
-        .facebook-button:hover {
-            background: #2d4373;
-        }
-        .google-button {
-            background: #db4437;
-        }
-        .google-button:hover {
-            background: #c1351d;
-        }
-        .error {
-            color: red;
-            font-size: 14px;
-            margin: 10px 0;
-            display: none; /* Varsayılan olarak gizle */
+        .back-to-menu-button:hover {
+            background: #FF9900;
         }
         /* Modal stil */
         .modal {
@@ -129,168 +129,210 @@
             text-align: center;
             color: #FFCC00;
         }
+        .modal-content h2 {
+            font-size: 24px;
+        }
         .modal-content button {
             background: #FFCC00;
             border: none;
             padding: 10px 20px;
             color: #000;
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 14px;
+            font-size: 16px;
             cursor: pointer;
             border-radius: 8px;
-            transition: background-color 0.3s ease;
-        }
-        .modal-content button:hover {
-            background: #e6b800;
-        }
-        .back-to-menu-button {
-            background: #333;
-            color: #FFCC00;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 8px;
-            cursor: pointer;
             transition: background-color 0.3s ease;
             margin-top: 20px;
         }
-        .back-to-menu-button:hover {
-            background: #444;
+        .modal-content button:hover {
+            background: #FF9900;
+        }
+        .modal-content .icon {
+            font-size: 48px;
         }
     </style>
 </head>
 <body>
-    <div class="signup-form">
-        <form id="signupForm">
-            <h1 class="title">Giriş Yap</h1>
-            <div id="errorContainer" class="error"></div>
-            <input type="text" class="txt" id="username" placeholder="Kullanıcı Adı">
-            <input type="email" class="txt" id="email" placeholder="Email Adresi">
-            <input type="password" class="txt" id="password" placeholder="Şifre">
-            <input type="submit" value="Hesap Oluştur">
-            <a href="#">Zaten Bir Hesabın Var mı?</a>
-            <div class="social-buttons">
-                <button onclick="loginWithFacebook()" class="social-button facebook-button">Facebook ile Giriş Yap</button>
-                <a href="#" class="social-button google-button">Google ile Giriş Yap</a>
-            </div>
-            <button class="back-to-menu-button" onclick="window.location.href='index.html'">Ana Menüye Dön</button>
+    <button class="back-to-menu-button" onclick="window.location.href='index.html'">Ana Menüye Dön</button>
+    <h1>Liderlik Tablosu</h1>
+
+    <div class="form-container">
+        <h2>Yeni Oyuncu Ekle/Güncelle</h2>
+        <form id="playerForm">
+            <label for="playerName">Oyuncu Adı:</label>
+            <input type="text" id="playerName" required>
+
+            <label for="scores">Puanlar (virgül ile ayrılmış):</label>
+            <input type="text" id="scores" placeholder="8,3,5,7,10,3,10,5,5,5" required>
+
+            <label for="wins">Kazandığı Maç Sayısı:</label>
+            <input type="number" id="wins" min="0" required>
+
+            <button type="submit">Hesapla ve Ekle/Güncelle</button>
         </form>
+        <button id="clearTable">Tabloyu Sil</button>
     </div>
 
+    <table id="leaderboard">
+        <thead>
+            <tr class="header-row">
+                <th>Oyuncu</th>
+                <th>Kişisel Puan</th>
+                <th>Kazanma Oranı (%)</th>
+                <th>Hesaplanan Puan</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Tablo satırları burada yer alacak -->
+        </tbody>
+    </table>
+
     <!-- Modal -->
-    <div id="successModal" class="modal">
+    <div id="confirmationModal" class="modal">
         <div class="modal-content">
-            <h2>Oturum Başarıyla Açıldı</h2>
-            <button id="closeModal">Tamam</button>
+            <div class="icon">🗑️</div>
+            <h2>Tabloyu Silmek İstediğinizden Emin Misiniz?</h2>
+            <button id="confirmClear">Tamam</button>
         </div>
     </div>
 
     <script>
-        document.getElementById('signupForm').addEventListener('submit', function(event) {
+        // Sayfa yüklendiğinde verileri yükle ve tabloyu sıralama
+        document.addEventListener('DOMContentLoaded', function() {
+            loadTable();
+            sortTable();
+        });
+
+        document.getElementById('playerForm').addEventListener('submit', function(event) {
             event.preventDefault();
 
-            // Hata mesajı alanını sıfırla
-            const errorContainer = document.getElementById('errorContainer');
-            errorContainer.innerHTML = '';
-            errorContainer.style.display = 'none';
+            // Form verilerini al
+            const name = document.getElementById('playerName').value;
+            const scores = document.getElementById('scores').value.split(',').map(Number);
+            const wins = parseInt(document.getElementById('wins').value);
 
-            // Form elemanlarını al
-            const username = document.getElementById('username').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const password = document.getElementById('password').value.trim();
+            // Hesaplamalar
+            const totalMatches = scores.length;
+            const totalScore = scores.reduce((acc, score) => acc + score, 0);
+            const personalScore = totalScore / totalMatches;
+            const winRate = wins / totalMatches;
+            const finalScore = (personalScore * winRate * 10).toFixed(2);
 
-            // Hata kontrolü
-            let hasError = false;
-
-            if (username === '') {
-                errorContainer.innerHTML += '<p>Kullanıcı adı boş bırakılamaz.</p>';
-                hasError = true;
-            }
-            if (email === '') {
-                errorContainer.innerHTML += '<p>Email adresi boş bırakılamaz.</p>';
-                hasError = true;
-            }
-            if (password === '') {
-                errorContainer.innerHTML += '<p>Şifre boş bırakılamaz.</p>';
-                hasError = true;
+            // Eğer oyuncu zaten varsa, mevcut verileri güncelle
+            if (isPlayerInTable(name)) {
+                updatePlayer(name, personalScore.toFixed(2), (winRate * 100).toFixed(2), finalScore);
+            } else {
+                // Tabloya yeni oyuncu ekle
+                addPlayer(name, personalScore.toFixed(2), (winRate * 100).toFixed(2), finalScore);
             }
 
-            if (hasError) {
-                errorContainer.style.display = 'block'; // Hata mesajlarını göster
-                return;
-            }
-
-            // Başarı mesajını göster
-            const successModal = document.getElementById('successModal');
-            successModal.style.display = 'flex';
+            // Tabloyu sıralama
+            sortTable();
         });
 
-        document.getElementById('closeModal').addEventListener('click', function() {
-            const successModal = document.getElementById('successModal');
-            successModal.style.display = 'none';
-            // Yönlendirme yapılacak sayfa
-            window.location.href = 'index.html';
+        // Tabloya yeni oyuncu ekle
+        function addPlayer(name, personalScore, winRate, finalScore) {
+            const tbody = document.querySelector('#leaderboard tbody');
+            
+            // Yeni oyuncuyu ekle
+            const row = document.createElement('tr');
+            row.setAttribute('data-name', name); // Oyuncunun adını data-attribute olarak ekle
+            row.innerHTML = `
+                <td>${name}</td>
+                <td>${personalScore}</td>
+                <td>${winRate}</td>
+                <td>${finalScore}</td>
+            `;
+            tbody.appendChild(row);
+
+            // Veriyi LocalStorage'a kaydet
+            saveToLocalStorage(name, personalScore, winRate, finalScore);
+        }
+
+        // Mevcut oyuncunun verilerini güncelle
+        function updatePlayer(name, personalScore, winRate, finalScore) {
+            const tbody = document.querySelector('#leaderboard tbody');
+            const rows = Array.from(tbody.querySelectorAll('tr'));
+
+            rows.forEach(row => {
+                if (row.getAttribute('data-name') === name) {
+                    row.innerHTML = `
+                        <td>${name}</td>
+                        <td>${personalScore}</td>
+                        <td>${winRate}</td>
+                        <td>${finalScore}</td>
+                    `;
+                }
+            });
+
+            // Veriyi LocalStorage'a güncelle
+            saveToLocalStorage(name, personalScore, winRate, finalScore);
+        }
+
+        // Tabloyu sıralama (en yüksek puan ilk sırada)
+        function sortTable() {
+            const tbody = document.querySelector('#leaderboard tbody');
+            const rows = Array.from(tbody.querySelectorAll('tr'));
+
+            // Satırları sıralama
+            rows.sort((a, b) => {
+                const scoreA = parseFloat(a.cells[3].textContent);
+                const scoreB = parseFloat(b.cells[3].textContent);
+                return scoreB - scoreA; // Büyükten küçüğe sıralama
+            });
+
+            // Sıralı satırları tabloya ekle
+            rows.forEach(row => tbody.appendChild(row));
+        }
+
+        // Veriyi LocalStorage'a kaydet
+        function saveToLocalStorage(name, personalScore, winRate, finalScore) {
+            let leaderboard = JSON.parse(localStorage.getItem('leaderboard')) || [];
+            
+            // Oyuncuyu güncelleme veya ekleme
+            const index = leaderboard.findIndex(player => player.name === name);
+            if (index > -1) {
+                leaderboard[index] = { name, personalScore, winRate, finalScore };
+            } else {
+                leaderboard.push({ name, personalScore, winRate, finalScore });
+            }
+            
+            localStorage.setItem('leaderboard', JSON.stringify(leaderboard));
+        }
+
+        // LocalStorage'dan veriyi yükle
+        function loadTable() {
+            let leaderboard = JSON.parse(localStorage.getItem('leaderboard')) || [];
+            const tbody = document.querySelector('#leaderboard tbody');
+            tbody.innerHTML = ''; // Tabloyu temizle
+            leaderboard.forEach(player => {
+                const row = document.createElement('tr');
+                row.setAttribute('data-name', player.name); // Oyuncunun adını data-attribute olarak ekle
+                row.innerHTML = `
+                    <td>${player.name}</td>
+                    <td>${player.personalScore}</td>
+                    <td>${player.winRate}</td>
+                    <td>${player.finalScore}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // Tabloyu temizleme fonksiyonu
+        function clearTable() {
+            const modal = document.getElementById('confirmationModal');
+            modal.style.display = 'flex'; // Modal'ı göster
+        }
+
+        // "Tamam" düğmesine tıklama olayı
+        document.getElementById('confirmClear').addEventListener('click', function() {
+            const tbody = document.querySelector('#leaderboard tbody');
+            tbody.innerHTML = ''; // Tabloyu temizle
+            localStorage.removeItem('leaderboard'); // LocalStorage'dan veriyi kaldır
+            document.getElementById('confirmationModal').style.display = 'none'; // Modal'ı gizle
         });
 
-        window.fbAsyncInit = function() {
-            FB.init({
-                appId      : 'YOUR_APP_ID', // Facebook App ID'nizi buraya ekleyin
-                cookie     : true,
-                xfbml      : true,
-                version    : 'v12.0'
-            });
-
-            FB.AppEvents.logPageView();   
-        };
-
-        function checkLoginState() {
-            FB.getLoginStatus(function(response) {
-                if (response.status === 'connected') {
-                    // Kullanıcı Facebook'ta giriş yapmış
-                    console.log('User is logged in with Facebook');
-                } else {
-                    // Kullanıcı giriş yapmamış
-                    console.log('User is not logged in with Facebook');
-                }
-            });
-        }
-
-        function loginWithFacebook() {
-            FB.login(function(response) {
-                if (response.authResponse) {
-                    console.log('Welcome!  Fetching your information.... ');
-                    FB.api('/me', function(response) {
-                        console.log('Good to see you, ' + response.name + '.');
-                    });
-                } else {
-                    console.log('User cancelled login or failed.');
-                }
-            }, {scope: 'public_profile,email'});
-        }
-
-        function onSignIn(googleUser) {
-            // Kullanıcı başarıyla giriş yaptı
-            var profile = googleUser.getBasicProfile();
-            console.log('ID: ' + profile.getId());
-            console.log('Name: ' + profile.getName());
-            console.log('Image URL: ' + profile.getImageUrl());
-            console.log('Email: ' + profile.getEmail());
-
-            // Token'ı alın
-            var id_token = googleUser.getAuthResponse().id_token;
-            console.log('ID Token: ' + id_token);
-
-            // Token'ı backend'e gönderin
-            // Örneğin, bir POST isteği göndererek
-            // fetch('/your-backend-endpoint', {
-            //     method: 'POST',
-            //     body: JSON.stringify({ id_token: id_token }),
-            //     headers: { 'Content-Type': 'application/json' }
-            // })
-            // .then(response => response.json())
-            // .then(data => console.log(data));
-        }
+        // "Tabloyu Sil" düğmesine tıklama olayı
+        document.getElementById('clearTable').addEventListener('click', clearTable);
     </script>
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <script src="https://connect.facebook.net/en_US/sdk.js" async defer></script>
 </body>
 </html>
