@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş ve Kayıt</title>
+    <style>
+        /* Genel Stil Ayarları */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 400px;
+        }
+        
+        .form-container {
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            width: 100%;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+        
+        h2 {
+            margin: 0 0 20px;
+            color: #FFCC00;
+            text-align: center;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        input[type="text"], 
+        input[type="email"], 
+        input[type="password"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #FFCC00;
+            border-radius: 5px;
+            background-color: #222;
+            color: #fff;
+        }
+        
+        button.btn {
+            background-color: #FFCC00;
+            border: none;
+            color: #000;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            width: 100%;
+        }
+        
+        button.btn:hover {
+            background-color: #e5a600;
+        }
+        
+        .switch-form {
+            text-align: center;
+            margin-top: 10px;
+        }
+        
+        .switch-form a {
+            color: #FFCC00;
+            text-decoration: none;
+        }
+        
+        .switch-form a:hover {
+            text-decoration: underline;
+        }
+        
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Giriş Formu -->
+        <div class="form-container" id="login-form">
+            <h2>Oturum Aç</h2>
+            <form id="login-form-element">
+                <label for="login-email">E-posta:</label>
+                <input type="email" id="login-email" name="login-email" required>
+                
+                <label for="login-password">Şifre:</label>
+                <input type="password" id="login-password" name="login-password" required>
+                
+                <button type="submit" class="btn">Giriş Yap</button>
+            </form>
+            <p class="switch-form"><a href="#" id="to-register">Kayıt Ol</a></p>
+        </div>
+
+        <!-- Kayıt Formu -->
+        <div class="form-container hidden" id="register-form">
+            <h2>Kayıt Ol</h2>
+            <form>
+                <label for="register-username">Kullanıcı Adı:</label>
+                <input type="text" id="register-username" name="register-username" required>
+                
+                <label for="register-email">E-posta:</label>
+                <input type="email" id="register-email" name="register-email" required>
+                
+                <label for="register-password">Şifre:</label>
+                <input type="password" id="register-password" name="register-password" required>
+                
+                <label for="confirm-password">Şifreyi Onayla:</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+                
+                <button type="submit" class="btn">Kayıt Ol</button>
+            </form>
+            <p class="switch-form"><a href="#" id="to-login">Giriş Yap</a></p>
+        </div>
+    </div>
+
+    <script>
+        // Giriş formunu işleyen script
+        document.getElementById('login-form-element').addEventListener('submit', function(event) {
+            event.preventDefault(); // Formun varsayılan submit davranışını engelle
+
+            const email = document.getElementById('login-email').value;
+            // Kullanıcıyı index.html sayfasına yönlendir ve e-posta parametresini ekle
+            localStorage.setItem('loggedIn', 'true');
+            window.location.href = `index.html?username=${encodeURIComponent(email)}&status=success`;
+        });
+
+        document.getElementById('to-register').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('login-form').classList.add('hidden');
+            document.getElementById('register-form').classList.remove('hidden');
+        });
+        
+        document.getElementById('to-login').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('register-form').classList.add('hidden');
+            document.getElementById('login-form').classList.remove('hidden');
+        });
+
+        // URL parametrelerini al
+        const urlParams = new URLSearchParams(window.location.search);
+        const status = urlParams.get('status');
+
+        // Eğer 'status' parametresi varsa mesajı göster
+        if (status === 'success') {
+            // Burada bir mesaj göstermek isteyebilirsiniz
+            // Örneğin:
+            // alert('Başarıyla giriş yaptınız!');
+        }
+    </script>
+</body>
+</html>

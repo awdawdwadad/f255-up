@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liderlik Tablosu</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #000;
+            color: #FFCC00;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #FFCC00;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            background-color: #333;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background-color: #FFCC00;
+            color: #000;
+            font-size: 16px;
+            border-bottom: 2px solid #FF9900;
+        }
+        td {
+            background-color: #444;
+            border-bottom: 1px solid #555;
+        }
+        tr:nth-child(even) td {
+            background-color: #555;
+        }
+        tr:hover td {
+            background-color: #666;
+        }
+        .header-row {
+            font-weight: bold;
+            color: #FFCC00;
+            background-color: #000;
+        }
+        .header-row td {
+            font-size: 18px;
+        }
+        .rank {
+            font-weight: bold;
+        }
+        .form-container {
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .form-container label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #FFCC00;
+        }
+        .form-container input, .form-container button {
+            margin-top: 10px;
+            padding: 10px;
+            width: 100%;
+            font-size: 16px;
+            color: #000;
+        }
+        .form-container input {
+            border: 1px solid #555;
+            border-radius: 4px;
+            background-color: #444;
+            color: #FFCC00;
+        }
+        .form-container button {
+            background-color: #FFCC00;
+            color: #000;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .form-container button:hover {
+            background-color: #FF9900;
+        }
+        .gold-crown {
+            color: #FFD700;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Liderlik Tablosu</h1>
+
+    <div class="form-container">
+        <h2>Yeni Oyuncu Ekle</h2>
+        <form id="playerForm">
+            <label for="playerName">Oyuncu Adı:</label>
+            <input type="text" id="playerName" required>
+
+            <label for="scores">Puanlar (virgül ile ayrılmış):</label>
+            <input type="text" id="scores" placeholder="8,3,5,7,10,3,10,5,5,5" required>
+
+            <label for="wins">Kazandığı Maç Sayısı:</label>
+            <input type="number" id="wins" min="0" required>
+
+            <button type="submit">Hesapla ve Ekle</button>
+        </form>
+        <button id="clearTable">Tabloyu Sil</button>
+    </div>
+
+    <table id="leaderboard">
+        <thead>
+            <tr class="header-row">
+                <th>Oyuncu</th>
+                <th>Kişisel Puan</th>
+                <th>Kazanma Oranı (%)</th>
+                <th>Hesaplanan Puan</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Tablo satırları burada yer alacak -->
+        </tbody>
+    </table>
+
+    <script>
+        // Sayfa yüklendiğinde verileri yükle ve tabloyu sıralama
+        document.addEventListener('DOMContentLoaded', function() {
+            loadTable();
+            sortTable();
+        });
+
+        document.getElementById('playerForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Form verilerini al
+            const name = document.getElementById('playerName').value;
+            const scores = document.getElementById('scores').value.split(',').map(Number);
+            const wins = parseInt(document.getElementById('wins').value);
+
+            // Hesaplamalar
+            const totalMatches = scores.length;
+            const totalScore = scores.reduce((acc, score) => acc + score, 0);
+            const personalScore = totalScore / totalMatches;
+            const winRate = wins / totalMatches;
+            const finalScore = (personalScore * winRate * 10).toFixed(2);
+
+            // Tabloya yeni oyuncu ekle
+            addPlayer(name, personalScore.toFixed(2), (winRate * 100).toFixed(2), finalScore);
+
+            // Tabloyu sıralama
+            sortTable();
+        });
+
+        // Tabloyu temizleme ve yeni oyuncu ekleme
+        function addPlayer(name, personalScore, winRate, finalScore) {
+            const tbody = document.querySelector('#leaderboard tbody');
+            
+            // Yeni oyuncuyu ekle
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${name}</td>
+                <td>${personalScore}</td>
+                <td>${winRate}</td>
+                <td>${finalScore}</td>
+            `;
+            tbody.appendChild(row);
+
+            // Veriyi LocalStorage'a kaydet
+            saveToLocalStorage(name, personalScore, winRate, finalScore);
+        }
+
+        // Tabloyu sıralama (en yüksek puan ilk sırada)
+        function sortTable() {
+            const tbody = document.querySelector('#leaderboard tbody');
+            const rows = Array.from(tbody.querySelectorAll('tr'));
+
+            // Önce tüm satırlardaki taç emojilerini temizle
+            rows.forEach(row => {
+                row.cells[0].innerHTML = row.cells[0].textContent;
+            });
+
+            // Satırları sıralama
+            rows.sort((a, b) => {
+                const scoreA = parseFloat(a.cells[3].textContent);
+                const scoreB = parseFloat(b.cells[3].textContent);
+                return scoreB - scoreA; // Büyükten küçüğe sıralama
+            });
+
+            // Sıralı satırları tabloya ekle ve en yüksek puana sahip olan kişiye taç ekle
+            rows.forEach((row, index) => {
+                tbody.appendChild(row);
+                if (index === 0) {
+                    row.cells[0].innerHTML += ' 👑'; // En yüksek puana sahip olan kişiye taç ekle
+                }
+            });
+        }
+
+        // Veriyi LocalStorage'a kaydet
+        function saveToLocalStorage(name, personalScore, winRate, finalScore) {
+            let leaderboard = JSON.parse(localStorage.getItem('leaderboard')) || [];
+            leaderboard.push({ name, personalScore, winRate, finalScore });
+            localStorage.setItem('leaderboard', JSON.stringify(leaderboard));
+        }
+
+        // LocalStorage'dan veriyi yükle
+        function loadTable() {
+            let leaderboard = JSON.parse(localStorage.getItem('leaderboard')) || [];
+            const tbody = document.querySelector('#leaderboard tbody');
+            tbody.innerHTML = ''; // Tabloyu temizle
+            leaderboard.forEach(player => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${player.name}</td>
+                    <td>${player.personalScore}</td>
+                    <td>${player.winRate}</td>
+                    <td>${player.finalScore}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // Tabloyu temizleme fonksiyonu
+        function clearTable() {
+            const confirmClear = confirm('Tabloyu silmek istediğinizden emin misiniz?');
+            if (confirmClear) {
+                const tbody = document.querySelector('#leaderboard tbody');
+                tbody.innerHTML = ''; // Tabloyu temizle
+                localStorage.removeItem('leaderboard'); // LocalStorage'dan veriyi kaldır
+            }
+        }
+
+        // "Tabloyu Sil" düğmesine tıklama olayı
+        document.getElementById('clearTable').addEventListener('click', clearTable);
+    </script>
+</body>
+</html>

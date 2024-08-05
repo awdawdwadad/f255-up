@@ -68,37 +68,38 @@
             border-radius: 8px;
         }
 
-        .owl-carousel .item {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 99%;
-            background: none;
-            color: #fff;
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-        }
+        .owl-carousel .item a {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1,5em; /* Metin boyutunu ayarlayın */
+    color: #ffcc00; /* Metin rengi */
+    text-decoration: none;
+    background: rgba(0, 0, 0, 0.7); /* Arka plan rengi */
+    padding: 10px 200px; /* İç boşluk */
+    border-radius: 5px; /* Köşe yuvarlama */
+    border: 2px solid #ffcc00; /* Kenarlık */
+    transition: background 0.3s, color 0.3s; /* Geçiş efektleri */
+    display: block; /* Tam genişlik için */
+    text-align: center; /* Metni ortala */
+}
 
-        .owl-carousel img {
-            max-width: 100%;
-            height: auto;
-        }
-
+.owl-carousel .item a:hover {
+    background: #ffcc00; /* Arka plan rengi üzerine gelindiğinde */
+    color: black; /* Metin rengi üzerine gelindiğinde */
+}
         .contributors-slider {
             width: 100%;
             padding: 0;
             overflow: hidden;
             margin: 0 auto;
-            height: 60px; /* Slayt yüksekliği */
+            height: 60px; /* Slider height */
         }
 
         .contributors-slider .item {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 60px; /* Slayt yüksekliği */
-            background: rgba(0, 0, 0, 0.5);
+            height: 55px; /* Slider height */
+           
             color: #fff;
             padding: 0;
             margin: 0;
@@ -112,7 +113,7 @@
         }
 
         .owl-stage {
-            height: auto; /* Otomatik yüksekliği ayarla */
+            height: auto; /* Adjust height automatically */
         }
 
         .myTable {
@@ -144,9 +145,88 @@
         .yazı {
             font-family: "Bebas Neue", sans-serif;
         }
-        .baslık{
+        
+        .baslık {
             font-family: "Anton", sans-serif;
         }
+
+        .ırk {
+            font-family: "Bebas Neue", sans-serif;
+            text-align: center;
+            margin-top: 30px; /* Add more spacing */
+        }
+
+        .ırk-link {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5em; /* Larger text size */
+            color: #ffcc00; /* Eye-catching color */
+            text-decoration: none;
+            background: rgba(0, 0, 0, 0.7); /* Background color */
+            padding: 10px 20px; /* Padding */
+            border-radius: 5px; /* Rounded corners */
+            border: 2px solid #ffcc00; /* Border color */
+            transition: background 0.3s, color 0.3s; /* Transition effects */
+        }
+
+        .ırk-link:hover {
+            background: #ffcc00; /* Background color on hover */
+            color: black; /* Text color on hover */
+        }
+
+        /* General link style */
+        .link {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 0.9em; /* Smaller font size */
+            color: #ffcc00; /* Eye-catching color */
+            text-decoration: none;
+            background: rgba(0, 0, 0, 0.5); /* Background color */
+            padding: 5px 10px; /* Padding */
+            border-radius: 3px; /* Rounded corners */
+            border: 1px solid #ffcc00; /* Thin border */
+            transition: background 0.3s, color 0.3s; /* Transition effects */
+        }
+
+        .link:hover {
+            background: #ffcc00; /* Background color on hover */
+            color: black; /* Text color on hover */
+        }
+.user-account {
+    position: fixed;
+    bottom: 20px; /* Alt kenardan boşluk */
+    left: 20px; /* Soldan boşluk */
+    margin: 0;
+    text-align: center;
+    z-index: 1000; /* Diğer içeriklerin üstünde görünmesini sağlar */
+}
+
+.user-account .link {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2em;
+    color: #ffcc00;
+    text-decoration: none;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 2px solid #ffcc00;
+    transition: background 0.3s, color 0.3s;
+}
+
+.user-account .link:hover {
+    background: #ffcc00;
+    color: black;
+.login-container {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    border-radius: 8px;
+    z-index: 1000;
+}
+
+
+
+
 
         /* Responsive Styles */
         @media (max-width: 1200px) {
@@ -218,6 +298,67 @@
                 font-size: 0.7em;
             }
         }
+        /* Sidebar Styles */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 250px;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            color: #fff;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .sidebar.open {
+            transform: translateX(0);
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            border-bottom: 1px solid #444;
+            text-align: center;
+        }
+
+        .sidebar-header h2 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+
+        .sidebar-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-content a {
+            color: #ffcc00;
+            text-decoration: none;
+            padding: 10px 0;
+            font-size: 1.1em;
+            transition: color 0.3s;
+        }
+
+        .sidebar-content a:hover {
+            color: #e6b800;
+        }
+
+        .sidebar-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: #ffcc00;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            z-index: 1000;
+            font-size: 1.2em;
+        }
     </style>
 </head>
 <body>
@@ -227,20 +368,20 @@
 
 <!-- Contributors Slider -->
 <div class="contributors-slider owl-carousel">
-    <div class="item"><h2><a href="bayramx.html">Bayramx</h2></a></div>
-    <div class="item"><a href="Cinayii.html"><h2>Cinayii</h2></a></div>
-    <div class="item"><a href="Byzantin.html"><h2>Byzantin</h2></a></div>
-    <div class="item"><a href="Cody.html"><h2>Cody</h2></a></div>
-    <div class="item"><a href="Dodi.html"><h2>Dodi</h2></a></div>
-    <div class="item"><h2><a href="Fratious.html">Fratious</h2></a></div>
-    <div class="item"><h2><a href="Hamzat.html">Hamzat</h2></a></div>
-    <div class="item"><h2><a href="Lost.html">Lost</h2></a></div>
-    <div class="item"><h2><a href="Mefe.html">Mefe</h2></a></div>
-    <div class="item"><h2><a href="Prowess.html">Prowess</h2></a></div>
-    <div class="item"><h2><a href="Strikeman.html">Strikeman</h2></a></div>
-    <div class="item"><h2><a href="The Karga.html">The Karga</h2></a></div>
-    <div class="item"><h2><a href="Turk.html">Turk</h2></a></div>
-    <div class="item"><h2><a href="Yolcu.html">Yolcu</h2></a></div>
+    <div class="item"><h2><a href="bayramx.html">Bayramx</a></h2></div>
+    <div class="item"><h2><a href="Cinayii.html">Cinayii</a></h2></div>
+    <div class="item"><h2><a href="Byzantin.html">Byzantin</a></h2></div>
+    <div class="item"><h2><a href="Cody.html">Cody</a></h2></div>
+    <div class="item"><h2><a href="Dodi.html">Dodi</a></h2></div>
+    <div class="item"><h2><a href="Fratious.html">Fratious</a></h2></div>
+    <div class="item"><h2><a href="Hamzat.html">Hamzat</a></h2></div>
+    <div class="item"><h2><a href="Lost.html">Lost</a></h2></div>
+    <div class="item"><h2><a href="Mefe.html">Mefe</a></h2></div>
+    <div class="item"><h2><a href="Prowess.html">Prowess</a></h2></div>
+    <div class="item"><h2><a href="Strikeman.html">Strikeman</a></h2></div>
+    <div class="item"><h2><a href="The Karga.html">The Karga</a></h2></div>
+    <div class="item"><h2><a href="Turk.html">Turk</a></h2></div>
+    <div class="item"><h2><a href="Yolcu.html">Yolcu</a></h2></div>
 </div>
 
 <!-- Ana içerik -->
@@ -257,41 +398,46 @@
         <div class="item"><img src="agegrup6.png" alt="Image 6"></div>
         <div class="item"><img src="agegrup7.png" alt="Image 7"></div>
     </div>
+    
 
-    <!-- Büyütülmüş resim ve açıklama -->
-    <div class="large-image-container">
-
-    </div>
-
-    <!-- Ek resim ve açıklama -->
-    <div class="additional-image-container">
-
-    </div>
-
-    <table class="myTable">
-        <tr>
-            <td>
-                <img src="ageofforgatten.jpeg" alt="Age of Empires II Forgotten Empires">
-                <div class="description">
-                    <a href="https://www.f255.net/actof/age.rar" class="yazı" title="Age Of Empires II Forgatten Empires">age of empires II Forgotten Empires Full</a><br><br><br><br><br>
-                </div>
-            </td>
-            <td>
-                <img src="aeo2.1.png" alt="AOE II" style="height: 200px;">
-                <div class="additional-description">
-                    <a href="https://www.f255.net/actof/aox.rar" class="yazı" title="Age Of Empires II">FOR GAME RANGER - AGE OF EMPIRES (AOX). (Tavsiye Edilen)</a><br><br><br><br><br><br>
-                </div>
-            </td>
-        </tr>
-    </table>
-
-    <div>
-        <a href="wololo.rar" class="yazı">For GAME RANGER - VERSION CHANGER (1.0, 1.0C, 1.0E etc.)</a><br><br>
-    </div>
-    <p class="yazı"><a href="https://www.f255.net/actof/hd-hotkeys.zip" title="HD HOTKEYLER">HD HOTKEYLER (Tüm HD hotkeyler)</a></p><br><br><br>
-
-    <p class="yazı"><a href="https://www.gameranger.com/" title="Game Ranger"><strong>GameRanger</strong><br><br> - Çok oyunculu oynamak için gereken ek uygulama</a></p>
-</div>
+     <!-- Büyütülmüş resim ve açıklama -->
+     <div class="large-image-container">
+         <!-- İçeriği buraya ekleyin -->
+     </div>
+ 
+     <!-- Ek resim ve açıklama -->
+     <div class="additional-image-container">
+         <!-- İçeriği buraya ekleyin -->
+     </div>
+ 
+     <table class="myTable">
+         <tr>
+             <td>
+                 <img src="ageofforgatten.jpeg" alt="Age of Empires II Forgotten Empires"><br><br>
+                 <div class="description">
+                     <a href="https://www.f255.net/actof/age.rar" class="link" title="Age Of Empires II Forgatten Empires">Age of Empires II Forgotten Empires Full</a>
+                 </div>
+             </td>
+             <td>
+                 <img src="aeo2.1.png" alt="AOE II" style="height: 200px;">
+                 <div class="additional-description">
+                     <a href="https://www.f255.net/actof/aox.rar" class="link" title="Age Of Empires II">FOR GAME RANGER - AGE OF EMPIRES (AOX). (Tavsiye Edilen)</a>
+                 </div>
+             </td>
+         </tr>
+     </table>
+     <div class="ırk"><a href="IrklarB.html" class="link">Irklar Hakkında Bilgi</a></div>
+     <br><br><br>
+     <div>
+         <a href="wololo.rar" class="link">For GAME RANGER - VERSION CHANGER (1.0, 1.0C, 1.0E etc.)</a>
+         <br><br>
+     </div>
+ 
+     <p class="link"><a href="https://www.f255.net/actof/hd-hotkeys.zip" title="HD HOTKEYLER">HD HOTKEYLER (Tüm HD hotkeyler)</a></p>
+     <br><br><br>
+ 
+     <p class="link"><a href="https://www.gameranger.com/" title="Game Ranger"><strong>GameRanger</strong><br><br> - Çok oyunculu oynamak için gereken ek uygulama</a></p>
+ </div>
 
 <!-- Google AdSense Script -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6999880595458369" crossorigin="anonymous"></script>
@@ -301,6 +447,21 @@
 
 <!-- Owl Carousel JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<div class="user-account">
+    <!-- Oturum Açma Bölümü -->
+
+   
+    
+        
+
+    
+<!-- Oturum Açma Bölümü -->
+<div class="login-container">
+    
+    <a href="kullanıcıhesap.html" class="link login-button">Kullanıcı Hesabı</a>
+</div>
+
+
 
 <script>
     $(document).ready(function(){
@@ -349,6 +510,19 @@
 
         observer.observe(carousel);
     });
+    document.addEventListener('DOMContentLoaded', function() {
+            // URL parametrelerini al
+            const urlParams = new URLSearchParams(window.location.search);
+            const status = urlParams.get('status');
+
+            // Eğer 'status' parametresi varsa, giriş yapıldıysa butonları gizle
+            if (status === 'loggedin') {
+                document.getElementById('login-button').classList.add('hidden');
+                document.getElementById('user-account-button').classList.remove('hidden');
+            }
+        });
+        
+        
 </script>
 </body>
 </html>

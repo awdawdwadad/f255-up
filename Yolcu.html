@@ -1,64 +1,182 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kişi Bilgisi</title>
+    <title>FBI Person Information</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
             margin: 0;
             padding: 0;
-            background-color: #f0f0f0;
         }
-
         .container {
-            display: flex;
-            max-width: 1200px;
-            margin: 20px auto;
-            background-color: #fff;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .info {
-            flex: 1;
+            max-width: 800px;
+            margin: 40px auto;
+            background: white;
             padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            display: none; /* Başlangıçta gizli */
         }
-
-        .photo {
-            flex: 1;
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header img {
+            width: 80px;
+            margin-bottom: 10px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #333;
+        }
+        .profile-picture {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .profile-picture img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid #333;
+        }
+        .info-section {
+            margin-bottom: 20px;
+        }
+        .info-section h2 {
+            font-size: 18px;
+            color: #333;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+        .info-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .info-list li {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        .info-list li span {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .badge {
+            display: inline-block;
+            padding: 5px 10px;
+            color: white;
+            background-color: #007bff;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .criminal-record-table,
+        .associates-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        .criminal-record-table th,
+        .criminal-record-table td,
+        .associates-table th,
+        .associates-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        .criminal-record-table th,
+        .associates-table th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+        }
+        .loader {
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #e0e0e0;
-        }
-
-        .photo img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-
-        h1 {
-            margin-top: 0;
-            font-size: 24px;
+            height: 100vh;
+            background-color: #f4f4f4;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="info">
-            <h1>Kişi Bilgisi</h1>
-            <p><strong>Adı:</strong> Ahmet Yılmaz</p>
-            <p><strong>Doğum Tarihi:</strong> 01 Ocak 1980</p>
-            <p><strong>Meslek:</strong> Yazılım Geliştirici</p>
-            <p><strong>Hakkında:</strong> Ahmet Yılmaz, yazılım geliştirme alanında 20 yılı aşkın deneyime sahip bir profesyoneldir. Çeşitli büyük projelerde görev almıştır ve yazılım mimarisi konusunda uzmandır.</p>
+    <div class="loader" id="loader">
+        <p>Loading...</p>
+    </div>
+    <div class="container" id="container">
+        <div class="header">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/FBI_seal.svg/1200px-FBI_seal.svg.png" alt="FBI Logo">
+            <h1>FBI Person Information</h1>
         </div>
-        <div class="photo">
-            <img src="person-photo.jpg" alt="Kişi Fotoğrafı">
+        <div class="profile-picture">
+            <img src="https://via.placeholder.com/100" alt="Profile Picture">
+        </div>
+        <div class="info-section">
+            <h2>Personal Information</h2>
+            <ul class="info-list">
+                <li><span>Full Name:</span> John Doe</li>
+                <li><span>Date of Birth:</span> January 1, 1970</li>
+                <li><span>Gender:</span> Male</li>
+                <li><span>Nationality:</span> American</li>
+                <li><span>Last Known Address:</span> 123 Main St, Anytown, USA</li>
+                <li><span>FBI ID:</span> <span class="badge">12345-67890</span></li>
+            </ul>
+        </div>
+        <div class="info-section">
+            <h2>Criminal Record</h2>
+            <table class="criminal-record-table">
+                <tr>
+                    <th>Case Number</th>
+                    <th>Offense</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <td>123456</td>
+                    <td>Burglary</td>
+                    <td>March 10, 2005</td>
+                    <td>Convicted</td>
+                </tr>
+                <tr>
+                    <td>789012</td>
+                    <td>Fraud</td>
+                    <td>June 22, 2010</td>
+                    <td>Under Investigation</td>
+                </tr>
+            </table>
+        </div>
+        <div class="info-section">
+            <h2>Known Associates</h2>
+            <table class="associates-table">
+                <tr>
+                    <th>Full Name</th>
+                    <th>Relation</th>
+                    <th>Last Known Address</th>
+                </tr>
+                <tr>
+                    <td>Jane Smith</td>
+                    <td>Accomplice</td>
+                    <td>456 Elm St, Othertown, USA</td>
+                </tr>
+                <tr>
+                    <td>Richard Roe</td>
+                    <td>Friend</td>
+                    <td>789 Pine St, Elsewhere, USA</td>
+                </tr>
+            </table>
         </div>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(function() {
+                document.getElementById("loader").style.display = "none";
+                document.getElementById("container").style.display = "block";
+            }, 3000); // 3 saniye bekler
+        });
+    </script>
 </body>
 </html>
