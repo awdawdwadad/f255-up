@@ -93,17 +93,13 @@
         .form-container button:hover {
             background-color: #FF9900;
         }
-        .gold-crown {
-            color: #FFD700;
-            font-size: 24px;
-        }
     </style>
 </head>
 <body>
     <h1>Liderlik Tablosu</h1>
 
     <div class="form-container">
-        <h2>Yeni Oyuncu Ekle</h2>
+        <h2>Yeni Oyuncu Ekle/Güncelle</h2>
         <form id="playerForm">
             <label for="playerName">Oyuncu Adı:</label>
             <input type="text" id="playerName" required>
@@ -114,7 +110,7 @@
             <label for="wins">Kazandığı Maç Sayısı:</label>
             <input type="number" id="wins" min="0" required>
 
-            <button type="submit">Hesapla ve Ekle</button>
+            <button type="submit">Hesapla ve Ekle/Güncelle</button>
         </form>
         <button id="clearTable">Tabloyu Sil</button>
     </div>
@@ -155,19 +151,25 @@
             const winRate = wins / totalMatches;
             const finalScore = (personalScore * winRate * 10).toFixed(2);
 
-            // Tabloya yeni oyuncu ekle
-            addPlayer(name, personalScore.toFixed(2), (winRate * 100).toFixed(2), finalScore);
+            // Eğer oyuncu zaten varsa, mevcut verileri güncelle
+            if (isPlayerInTable(name)) {
+                updatePlayer(name, personalScore.toFixed(2), (winRate * 100).toFixed(2), finalScore);
+            } else {
+                // Tabloya yeni oyuncu ekle
+                addPlayer(name, personalScore.toFixed(2), (winRate * 100).toFixed(2), finalScore);
+            }
 
             // Tabloyu sıralama
             sortTable();
         });
 
-        // Tabloyu temizleme ve yeni oyuncu ekleme
+        // Tabloya yeni oyuncu ekle
         function addPlayer(name, personalScore, winRate, finalScore) {
             const tbody = document.querySelector('#leaderboard tbody');
             
             // Yeni oyuncuyu ekle
             const row = document.createElement('tr');
+            row.setAttribute('data-name', name); // Oyuncunun adını data-attribute olarak ekle
             row.innerHTML = `
                 <td>${name}</td>
                 <td>${personalScore}</td>
@@ -180,15 +182,30 @@
             saveToLocalStorage(name, personalScore, winRate, finalScore);
         }
 
+        // Mevcut oyuncunun verilerini güncelle
+        function updatePlayer(name, personalScore, winRate, finalScore) {
+            const tbody = document.querySelector('#leaderboard tbody');
+            const rows = Array.from(tbody.querySelectorAll('tr'));
+
+            rows.forEach(row => {
+                if (row.getAttribute('data-name') === name) {
+                    row.innerHTML = `
+                        <td>${name}</td>
+                        <td>${personalScore}</td>
+                        <td>${winRate}</td>
+                        <td>${finalScore}</td>
+                    `;
+                }
+            });
+
+            // Veriyi LocalStorage'a güncelle
+            saveToLocalStorage(name, personalScore, winRate, finalScore);
+        }
+
         // Tabloyu sıralama (en yüksek puan ilk sırada)
         function sortTable() {
             const tbody = document.querySelector('#leaderboard tbody');
             const rows = Array.from(tbody.querySelectorAll('tr'));
-
-            // Önce tüm satırlardaki taç emojilerini temizle
-            rows.forEach(row => {
-                row.cells[0].innerHTML = row.cells[0].textContent;
-            });
 
             // Satırları sıralama
             rows.sort((a, b) => {
@@ -197,19 +214,22 @@
                 return scoreB - scoreA; // Büyükten küçüğe sıralama
             });
 
-            // Sıralı satırları tabloya ekle ve en yüksek puana sahip olan kişiye taç ekle
-            rows.forEach((row, index) => {
-                tbody.appendChild(row);
-                if (index === 0) {
-                    row.cells[0].innerHTML += ' 👑'; // En yüksek puana sahip olan kişiye taç ekle
-                }
-            });
+            // Sıralı satırları tabloya ekle
+            rows.forEach(row => tbody.appendChild(row));
         }
 
         // Veriyi LocalStorage'a kaydet
         function saveToLocalStorage(name, personalScore, winRate, finalScore) {
             let leaderboard = JSON.parse(localStorage.getItem('leaderboard')) || [];
-            leaderboard.push({ name, personalScore, winRate, finalScore });
+            
+            // Oyuncuyu güncelleme veya ekleme
+            const index = leaderboard.findIndex(player => player.name === name);
+            if (index > -1) {
+                leaderboard[index] = { name, personalScore, winRate, finalScore };
+            } else {
+                leaderboard.push({ name, personalScore, winRate, finalScore });
+            }
+            
             localStorage.setItem('leaderboard', JSON.stringify(leaderboard));
         }
 
@@ -220,6 +240,7 @@
             tbody.innerHTML = ''; // Tabloyu temizle
             leaderboard.forEach(player => {
                 const row = document.createElement('tr');
+                row.setAttribute('data-name', player.name); // Oyuncunun adını data-attribute olarak ekle
                 row.innerHTML = `
                     <td>${player.name}</td>
                     <td>${player.personalScore}</td>
@@ -242,6 +263,13 @@
 
         // "Tabloyu Sil" düğmesine tıklama olayı
         document.getElementById('clearTable').addEventListener('click', clearTable);
+
+        // Aynı isimde oyuncu olup olmadığını kontrol et
+        function isPlayerInTable(name) {
+            const tbody = document.querySelector('#leaderboard tbody');
+            const rows = Array.from(tbody.querySelectorAll('tr'));
+            return rows.some(row => row.getAttribute('data-name') === name);
+        }
     </script>
 </body>
 </html>

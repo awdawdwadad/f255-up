@@ -70,7 +70,7 @@
 
         .owl-carousel .item a {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 1,5em; /* Metin boyutunu ayarlayın */
+    font-size: 1cqmax; /* Metin boyutunu ayarlayın */
     color: #ffcc00; /* Metin rengi */
     text-decoration: none;
     background: rgba(0, 0, 0, 0.7); /* Arka plan rengi */
@@ -158,7 +158,7 @@
 
         .ırk-link {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.5em; /* Larger text size */
+            font-size: 3em; /* Larger text size */
             color: #ffcc00; /* Eye-catching color */
             text-decoration: none;
             background: rgba(0, 0, 0, 0.7); /* Background color */
@@ -359,6 +359,25 @@
             z-index: 1000;
             font-size: 1.2em;
         }
+        .message {
+            font-size: 2em;
+            background: #333;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background: #1e1e1e;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #FFCC00;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
     </style>
 </head>
 <body>
@@ -379,7 +398,7 @@
     <div class="item"><h2><a href="Mefe.html">Mefe</a></h2></div>
     <div class="item"><h2><a href="Prowess.html">Prowess</a></h2></div>
     <div class="item"><h2><a href="Strikeman.html">Strikeman</a></h2></div>
-    <div class="item"><h2><a href="The Karga.html">The Karga</a></h2></div>
+    <div class="item"><h2><a href="The Karga.html">The Karga </a></h2></div>
     <div class="item"><h2><a href="Turk.html">Turk</a></h2></div>
     <div class="item"><h2><a href="Yolcu.html">Yolcu</a></h2></div>
 </div>
@@ -457,7 +476,7 @@
     
 <!-- Oturum Açma Bölümü -->
 <div class="login-container">
-    
+    <a href="oturum.html" class="link login-button">Oturum Aç</a>
     <a href="kullanıcıhesap.html" class="link login-button">Kullanıcı Hesabı</a>
 </div>
 
@@ -521,8 +540,45 @@
                 document.getElementById('user-account-button').classList.remove('hidden');
             }
         });
-        
+       
+        window.fbAsyncInit = function() {
+        FB.init({
+            appId      : 'YOUR_APP_ID', // Facebook App ID'nizi buraya ekleyin
+            cookie     : true,
+            xfbml      : true,
+            version    : 'v12.0'
+        });
+
+        FB.AppEvents.logPageView();   
+    };
+
+    function checkLoginState() {
+        FB.getLoginStatus(function(response) {
+            if (response.status === 'connected') {
+                // Kullanıcı Facebook'ta giriş yapmış
+                console.log('User is logged in with Facebook');
+            } else {
+                // Kullanıcı giriş yapmamış
+                console.log('User is not logged in with Facebook');
+            }
+        });
+    }
+
+    function loginWithFacebook() {
+        FB.login(function(response) {
+            if (response.authResponse) {
+                console.log('Welcome!  Fetching your information.... ');
+                FB.api('/me', function(response) {
+                    console.log('Good to see you, ' + response.name + '.');
+                });
+            } else {
+                console.log('User cancelled login or failed.');
+            }
+        }, {scope: 'public_profile,email'});
+    }
         
 </script>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+
 </body>
 </html>
